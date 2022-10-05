@@ -92,39 +92,5 @@ $lazy = false;
 			<?php endif  ?>
 		<?php endforeach ?>
 	<?php endif ?>
-
-	<div class="home-slide home-slide2 banner banner-md-vw">
-		<img class="slide-bg" style="background-color: #ccc;" width="1903" height="499" src="/assets/images/demoes/demo4/slider/slide-2.jpg" alt="slider image">
-		<div class="container d-flex align-items-center">
-			<div class="banner-layer d-flex justify-content-center appear-animate" data-animation-name="fadeInUpShorter">
-				<div class="mx-auto">
-					<h4 class="m-b-1">Extra</h4>
-					<h3 class="m-b-2">20% off</h3>
-					<h3 class="mb-2 heading-border">Accessories</h3>
-					<h2 class="text-transform-none m-b-4">Summer Sale</h2>
-					<a href="category.html" class="btn btn-block btn-dark">Shop All Sale</a>
-				</div>
-			</div>
-			<!-- End .banner-layer -->
-		</div>
-	</div>
-	<!-- End .home-slide -->
-
-	<div class="home-slide home-slide2 banner banner-md-vw">
-		<img class="slide-bg" style="background-color: #ccc;" width="1903" height="499" src="/assets/images/demoes/demo4/slider/slide-2.jpg" alt="slider image">
-		<div class="container d-flex align-items-center">
-			<div class="banner-layer d-flex justify-content-center appear-animate" data-animation-name="fadeInUpShorter">
-				<div class="mx-auto">
-					<h4 class="m-b-1">Extra2</h4>
-					<h3 class="m-b-2">202% off</h3>
-					<h3 class="mb-2 heading-border">Accessories 2</h3>
-					<h2 class="text-transform-none m-b-4">Summer Sale 2</h2>
-					<a href="category.html" class="btn btn-block btn-dark">Shop All Sale 2</a>
-				</div>
-			</div>
-			<!-- End .banner-layer -->
-		</div>
-	</div>
-	<!-- End .home-slide -->
 </div>
 <!-- End .home-slider -->
