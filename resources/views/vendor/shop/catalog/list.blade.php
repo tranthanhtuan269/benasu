@@ -28,7 +28,6 @@
 @stop
 
 @section('aimeos_body')
-listssssssssssssssssssssssssssss
     <?= $aibody['catalog/stage'] ?? '' ?>
     <div class="container-fluid">
         <div class="row">

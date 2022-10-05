@@ -13,7 +13,7 @@
     <meta name="author" content="SW-THEMES">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/images/icons/favicon.png">
 
 
     <script>
@@ -25,18 +25,18 @@
         (function(d) {
             var wf = d.createElement('script'),
                 s = d.scripts[0];
-            wf.src = 'assets/js/webfont.js';
+            wf.src = '/assets/js/webfont.js';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);
     </script>
 
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="assets/css/demo4.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/demo4.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
@@ -127,7 +127,7 @@
 							<i class="fas fa-bars"></i>
 						</button>
                         <a href="demo4.html" class="logo">
-                            <img src="assets/images/logo.png" width="111" height="44" alt="Porto Logo">
+                            <img src="/assets/images/logo.png" width="111" height="44" alt="Porto Logo">
                         </a>
                     </div>
                     <!-- End .header-left -->
@@ -168,7 +168,7 @@
                         <!-- End .header-search -->
 
                         <div class="header-contact d-none d-lg-flex pl-4 pr-4">
-                            <img alt="phone" src="assets/images/phone.png" width="30" height="30" class="pb-1">
+                            <img alt="phone" src="/assets/images/phone.png" width="30" height="30" class="pb-1">
                             <h6><span>Call us now</span><a href="tel:#" class="text-dark font1">+123 5678 890</a></h6>
                         </div>
 
@@ -206,7 +206,7 @@
 
                                             <figure class="product-image-container">
                                                 <a href="product.html" class="product-image">
-                                                    <img src="assets/images/products/product-1.jpg" alt="product" width="80" height="80">
+                                                    <img src="/assets/images/products/product-1.jpg" alt="product" width="80" height="80">
                                                 </a>
 
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
@@ -228,7 +228,7 @@
 
                                             <figure class="product-image-container">
                                                 <a href="product.html" class="product-image">
-                                                    <img src="assets/images/products/product-2.jpg" alt="product" width="80" height="80">
+                                                    <img src="/assets/images/products/product-2.jpg" alt="product" width="80" height="80">
                                                 </a>
 
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
@@ -250,7 +250,7 @@
 
                                             <figure class="product-image-container">
                                                 <a href="product.html" class="product-image">
-                                                    <img src="assets/images/products/product-3.jpg" alt="product" width="80" height="80">
+                                                    <img src="/assets/images/products/product-3.jpg" alt="product" width="80" height="80">
                                                 </a>
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
                                             </figure>
@@ -330,7 +330,7 @@
                                         <div class="col-lg-4 p-0">
                                             <div class="menu-banner">
                                                 <figure>
-                                                    <img src="assets/images/menu-banner.jpg" width="192" height="313" alt="Menu banner">
+                                                    <img src="/assets/images/menu-banner.jpg" width="192" height="313" alt="Menu banner">
                                                 </figure>
                                                 <div class="banner-content">
                                                     <h4>
@@ -383,7 +383,7 @@
                                         <div class="col-lg-4 p-0">
                                             <div class="menu-banner menu-banner-2">
                                                 <figure>
-                                                    <img src="assets/images/menu-banner-1.jpg" width="182" height="317" alt="Menu banner" class="product-promo">
+                                                    <img src="/assets/images/menu-banner-1.jpg" width="182" height="317" alt="Menu banner" class="product-promo">
                                                 </figure>
                                                 <i>OFF</i>
                                                 <div class="banner-content">
@@ -564,10 +564,10 @@
 
                         <div class="footer-right ml-auto mt-1 mt-sm-0">
                             <div class="payment-icons">
-                                <span class="payment-icon visa" style="background-image: url(assets/images/payments/payment-visa.svg)"></span>
-                                <span class="payment-icon paypal" style="background-image: url(assets/images/payments/payment-paypal.svg)"></span>
-                                <span class="payment-icon stripe" style="background-image: url(assets/images/payments/payment-stripe.png)"></span>
-                                <span class="payment-icon verisign" style="background-image:  url(assets/images/payments/payment-verisign.svg)"></span>
+                                <span class="payment-icon visa" style="background-image: url(/assets/images/payments/payment-visa.svg)"></span>
+                                <span class="payment-icon paypal" style="background-image: url(/assets/images/payments/payment-paypal.svg)"></span>
+                                <span class="payment-icon stripe" style="background-image: url(/assets/images/payments/payment-stripe.png)"></span>
+                                <span class="payment-icon verisign" style="background-image:  url(/assets/images/payments/payment-verisign.svg)"></span>
                             </div>
                         </div>
                     </div>
@@ -769,9 +769,9 @@
         </div>
     </div>
 
-    <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(assets/images/newsletter_popup_bg.jpg)">
+    <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form" style="background: #f1f1f1 no-repeat center/cover url(/assets/images/newsletter_popup_bg.jpg)">
         <div class="newsletter-popup-content">
-            <img src="assets/images/logo.png" width="111" height="44" alt="Logo" class="logo-newsletter">
+            <img src="/assets/images/logo.png" width="111" height="44" alt="Logo" class="logo-newsletter">
             <h2>Subscribe to newsletter</h2>
 
             <p>
@@ -804,14 +804,14 @@
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
     <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/optional/isotope.pkgd.min.js"></script>
-    <script src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/jquery.appear.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/optional/isotope.pkgd.min.js"></script>
+    <script src="/assets/js/plugins.min.js"></script>
+    <script src="/assets/js/jquery.appear.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="assets/js/main.min.js"></script>
+    <script src="/assets/js/main.min.js"></script>
 </body>
 
 </html>

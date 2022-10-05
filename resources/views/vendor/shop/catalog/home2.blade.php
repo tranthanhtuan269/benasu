@@ -16,4 +16,5 @@
 
 @section('aimeos_body')
     <?= $aibody['catalog/home'] ?? '' ?>
+    <?= $aibody['cms/page'] ?? '' ?>
 @stop
