@@ -1,0 +1,22 @@
+{
+	"projectName": "benasu",
+	"licenseText": "proprietary",
+	"pkgs": [{
+		"name": "benasu CSS",
+		"file": "benasu.css",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.css",
+			"path": "themes/admin/jqadm/"
+		}]
+	}, {
+		"name": "benasu JS",
+		"file": "benasu.js",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.js",
+			"path": "themes/admin/jqadm/"
+		}]
+	}],
+	"resources" : []
+}
