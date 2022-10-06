@@ -155,10 +155,19 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 								<?= $enc->html( $this->translate( 'mshop/code', $key ) ) ?>
 							<?php endif ?>
 						</div>
+						<?php
+							$url2 = '#';
+
+							if( ( $product->getFlags() & \Aimeos\MShop\Order\Item\Base\Product\Base::FLAG_IMMUTABLE ) == 0 )
+							{
+								$params = ['d_name' => $product->getName( 'url' ), 'd_prodid' => $product->getParentProductId() ?: $product->getProductId(), 'd_pos' => ''];
+								$url2 = $this->url( ( $product->getTarget() ?: $detailTarget ), $detailController, $detailAction, $params, [], $detailConfig );
+							}
+						?>
 						<div class="image col-11 col-lg-3">
 							<figure class="product-image-container">
 								<?php if( ( $url = $product->getMediaUrl() ) != '' ) : ?>
-									<a href="product.html" class="product-image">
+									<a href="<?= $enc->attr( $url2 ) ?>" class="product-image">
 										<img class="detail" src="<?= $enc->attr( $this->content( $url ) ) ?>">
 									</a>
 									<?php if( $modify ) : ?>
@@ -171,15 +180,6 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 							</figure>
 						</div>
 						<div class="details col-12 col-lg-8">
-							<?php
-								$url = '#';
-
-								if( ( $product->getFlags() & \Aimeos\MShop\Order\Item\Base\Product\Base::FLAG_IMMUTABLE ) == 0 )
-								{
-									$params = ['d_name' => $product->getName( 'url' ), 'd_prodid' => $product->getParentProductId() ?: $product->getProductId(), 'd_pos' => ''];
-									$url = $this->url( ( $product->getTarget() ?: $detailTarget ), $detailController, $detailAction, $params, [], $detailConfig );
-								}
-							?>
 							<a class="product-name" href="<?= $enc->attr( $url ) ?>"><?= $enc->html( $product->getName(), $enc::TRUST ) ?></a>
 							<p class="code">
 								<span class="name"><?= $enc->html( $this->translate( 'client', 'Article no.' ), $enc::TRUST ) ?></span>
@@ -264,7 +264,6 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 					</div>
 				</div>
 			</div>
-
 		<?php endforeach ?>
 	<?php endforeach ?>
 

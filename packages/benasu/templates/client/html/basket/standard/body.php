@@ -10,6 +10,11 @@ $enc = $this->encoder();
 
 
 ?>
+
+
+
+
+
 <ul class="checkout-progress-bar d-flex justify-content-center flex-wrap">
 	<li class="active">
 		<a href="cart.html">Shopping Cart</a>
@@ -51,19 +56,13 @@ $enc = $this->encoder();
 					</div>
 				</div>
 
-				<div class="basket-standard-coupon">
-					<div class="header">
-						<h2><?= $enc->html( $this->translate( 'client', 'Coupon codes' ) ) ?></h2>
-					</div>
-
+				<div>
 					<div class="content">
-
 						<div class="input-group coupon-new">
 							<input class="form-control coupon-code" type="text" maxlength="255"
 								placeholder="<?= $enc->attr( $this->translate( 'client', 'Coupon codes' ) ) ?>"
 								name="<?= $enc->attr( $this->formparam( 'b_coupon' ) ) ?>"
-							><!--
-							--><button class="btn btn-primary" type="submit"><?= $enc->html( $this->translate( 'client', 'Apply' ) ) ?></button>
+							><button class="btn btn-primary" type="submit"><?= $enc->html( $this->translate( 'client', 'Apply' ) ) ?></button>
 						</div>
 
 						<?php if( !( $coupons = $this->standardBasket->getCoupons() )->isEmpty() ) : ?>

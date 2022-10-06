@@ -74,6 +74,10 @@
 	font-size: 125%;
 }
 
+.common-summary-detail .product-item{
+	margin-bottom: 10px;
+}
+
 @media (max-width: 480px) {
 	.basket-standard-coupon .header,
 	.basket-standard-coupon .content {

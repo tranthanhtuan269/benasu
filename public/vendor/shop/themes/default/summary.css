@@ -212,6 +212,8 @@
 .aimeos .common-summary-detail .product-item {
 	padding: 0.5rem 0;
 	border-bottom: 1px solid;
+	padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .aimeos .common-summary-detail .price{
@@ -231,6 +233,8 @@
 .aimeos .common-summary-detail .minibutton.change.down{
 	height: 48px;width: 30px;font-size: 1.6rem;font-weight: 700;border-top: 1px solid #ccc;padding: 12px 10px;margin-right: -5px;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;
 }
+
+
 
 .aimeos .common-summary-additional .coupon,
 .aimeos .common-summary-additional .comment {
