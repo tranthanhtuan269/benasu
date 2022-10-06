@@ -10,21 +10,24 @@ $enc = $this->encoder();
 
 
 ?>
-<?php if(false) : ?>
+<ul class="checkout-progress-bar d-flex justify-content-center flex-wrap">
+	<li class="active">
+		<a href="cart.html">Shopping Cart</a>
+	</li>
+	<li>
+		<a href="checkout.html">Checkout</a>
+	</li>
+	<li class="disabled">
+		<a href="cart.html">Order Complete</a>
+	</li>
+</ul>
 <?php if( isset( $this->standardBasket ) ) : ?>
-
 	<section class="aimeos basket-standard" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 		<div class="container-xxl">
-			<h1><?= $enc->html( $this->translate( 'client', 'Basket' ), $enc::TRUST ) ?></h1>
-
 			<form method="POST" action="<?= $enc->attr( $this->link( 'client/html/basket/standard/url' ) ) ?>">
 				<?= $this->csrf()->formfield() ?>
 
 				<div class="common-summary-detail">
-					<div class="header">
-						<h2><?= $enc->html( $this->translate( 'client', 'Details' ), $enc::TRUST ) ?></h2>
-					</div>
-
 					<div class="basket">
 						<?= $this->partial(
 							/** client/html/basket/standard/summary/detail
@@ -108,5 +111,4 @@ $enc = $this->encoder();
 		</div>
 	</section>
 
-<?php endif ?>
 <?php endif ?>

@@ -124,25 +124,27 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 ?>
 <div>
 	<div class="row g-0 headline">
-		<div class="col-8 col-md-6 offset-4 offset-md-6">
+		<div class="col-4 col-md-6">
 			<div class="row g-0">
-				<div class="col-4 quantity"><?= $enc->html( $this->translate( 'client', 'Quantity' ), $enc::TRUST ) ?></div>
-				<div class="col-4 unitprice"><?= $enc->html( $this->translate( 'client', 'Price' ), $enc::TRUST ) ?></div>
-				<div class="col-3 price"><?= $enc->html( $this->translate( 'client', 'Sum' ), $enc::TRUST ) ?></div>
+				<div class="status col-1"></div>
+				<div class="image col-11 col-lg-3"></div>
+				<div class="details col-12 col-lg-8"><?= $enc->html( $this->translate( 'client', 'Product' ), $enc::TRUST ) ?></div>
 				<?php if( $modify ) : ?>
 					<div class="action col-1"></div>
 				<?php endif ?>
 			</div>
 		</div>
+		<div class="col-8 col-md-6">
+			<div class="row g-0">
+				<div class="quantity col-4 quantity col-4"><?= $enc->html( $this->translate( 'client', 'Quantity' ), $enc::TRUST ) ?></div>
+				<div class="unitprice col-4"><?= $enc->html( $this->translate( 'client', 'Price' ), $enc::TRUST ) ?></div>
+				<div class="price col-3"><?= $enc->html( $this->translate( 'client', 'Subtotal' ), $enc::TRUST ) ?></div>
+				<div class="action col-1"></div>
+			</div>
+		</div>
 	</div>
 
 	<?php foreach( $this->summaryBasket->getProducts()->groupBy( 'order.base.product.vendor' )->ksort() as $vendor => $list ) : ?>
-
-		<?php if( $vendor ) : ?>
-			<div class="supplier">
-				<h3 class="supplier-name"><?= $enc->html( $vendor ) ?></h3>
-			</div>
-		<?php endif ?>
 
 		<?php foreach( $list as $position => $product ) : $totalQuantity += $product->getQuantity() ?>
 			<div class="row g-0 product-item <?= ( isset( $errors['product'][$position] ) ? 'error' : '' ) ?>">
@@ -154,9 +156,19 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 							<?php endif ?>
 						</div>
 						<div class="image col-11 col-lg-3">
-							<?php if( ( $url = $product->getMediaUrl() ) != '' ) : ?>
-								<img class="detail" src="<?= $enc->attr( $this->content( $url ) ) ?>">
-							<?php endif ?>
+							<figure class="product-image-container">
+								<?php if( ( $url = $product->getMediaUrl() ) != '' ) : ?>
+									<a href="product.html" class="product-image">
+										<img class="detail" src="<?= $enc->attr( $this->content( $url ) ) ?>">
+									</a>
+									<?php if( $modify ) : ?>
+										<?php if( ( $product->getFlags() & \Aimeos\MShop\Order\Item\Base\Product\Base::FLAG_IMMUTABLE ) == 0 ) : ?>
+											<?php $basketParams = array( 'b_action' => 'delete', 'b_position' => $position ) ?>
+											<a class="btn-remove icon-cancel" title="Remove Product" href="<?= $enc->attr( $this->link( 'client/html/basket/standard/url', $basketParams ) ) ?>"></a>
+										<?php endif ?>
+									<?php endif ?>
+								<?php endif ?>
+							</figure>
 						</div>
 						<div class="details col-12 col-lg-8">
 							<?php
@@ -229,7 +241,7 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 									&nbsp;
 								<?php endif ?>
 
-								<input class="value" type="number" required="required"
+								<input class="value" type="text" required="required"
 									name="<?= $enc->attr( $this->formparam( array( 'b_prod', $position, 'quantity' ) ) ) ?>"
 									value="<?= $enc->attr( $product->getQuantity() ) ?>"
 									step="<?= $enc->attr( $product->getScale() ) ?>"
@@ -243,22 +255,12 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 
 								<?php $basketParams = array( 'b_action' => 'edit', 'b_position' => $position, 'b_quantity' => $product->getQuantity() + 1 ) ?>
 								<a class="minibutton change up" href="<?= $enc->attr( $this->link( 'client/html/basket/standard/url', $basketParams ) ) ?>">+</a>
-
 							<?php else : ?>
 								<?= $enc->html( $product->getQuantity() ) ?>
 							<?php endif ?>
 						</div>
 						<div class="unitprice col-4"><?= $enc->html( sprintf( $priceFormat, $this->number( $product->getPrice()->getValue(), $precision ), $priceCurrency ) ) ?></div>
 						<div class="price col-3"><?= $enc->html( sprintf( $priceFormat, $this->number( $product->getPrice()->getValue() * $product->getQuantity(), $precision ), $priceCurrency ) ) ?></div>
-						<?php if( $modify ) : ?>
-						<div class="action col-1">
-							<?php if( ( $product->getFlags() & \Aimeos\MShop\Order\Item\Base\Product\Base::FLAG_IMMUTABLE ) == 0 ) : ?>
-								<?php $basketParams = array( 'b_action' => 'delete', 'b_position' => $position ) ?>
-								<a class="minibutton delete" href="<?= $enc->attr( $this->link( 'client/html/basket/standard/url', $basketParams ) ) ?>"></a>
-							<?php endif ?>
-						</div>
-						<?php endif ?>
-
 					</div>
 				</div>
 			</div>
