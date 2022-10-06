@@ -144,7 +144,7 @@ return $routes + [
 		'html' => [
 			'basket' => [
 				'cache' => [
-					// 'enable' => false, // Disable basket content caching for development
+					'enable' => false, // Disable basket content caching for development
 				],
 			],
 			'common' => [

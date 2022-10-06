@@ -10,6 +10,7 @@ $enc = $this->encoder();
 
 
 ?>
+<?php if(false) : ?>
 <?php if( isset( $this->standardBasket ) ) : ?>
 
 	<section class="aimeos basket-standard" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
@@ -107,4 +108,5 @@ $enc = $this->encoder();
 		</div>
 	</section>
 
+<?php endif ?>
 <?php endif ?>
