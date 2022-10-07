@@ -155,6 +155,7 @@ return $routes + [
 			'catalog' => [
 				'lists' => [
 					'basket-add' => true, // shows add to basket in list views
+					'enable' => false,
 					// 'infinite-scroll' => true, // load more products in list view
 					// 'size' => 48, // number of products per page
 				],
@@ -172,7 +173,7 @@ return $routes + [
 	'controller' => [
 		'frontend' => [
 			'catalog' => [
-				'levels-always' => 3 // number of category levels for mega menu
+				'levels-always' => 30 // number of category levels for mega menu
 			]
 		]
 	],

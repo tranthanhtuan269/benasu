@@ -161,6 +161,9 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 		$mediaItems = $productItem->getRefItems( 'media', 'default', 'default' );
 	?>
 
+
+
+<?php if(false) : ?>
 	<div class="product <?= $enc->attr( $productItem->getConfigValue( 'css-class' ) ) ?>"
 		data-prodid="<?= $enc->attr( $id ) ?>" data-reqstock="<?= (int) $this->get( 'require-stock', true ) ?>"
 		itemprop="<?= $this->get( 'itemprop' ) ?>" itemscope itemtype="http://schema.org/Product">
@@ -371,5 +374,70 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 			</div>
 		</div>
 	</div>
+<?php endif ?>
+
+<div class="product-default appear-animate" data-animation-name="fadeInRightShorter">
+	<figure>
+		<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>">
+			<?php if( $mediaItem = $mediaItems->first() ) : ?>
+				<?php foreach( $mediaItems as $mediaItem ) : ?>
+					<img class="product-image"
+						src="<?= $enc->attr( $this->content( $mediaItem->getPreview(), $mediaItem->getFileSystem() ) ) ?>"
+						alt="<?= $enc->attr( $mediaItem->getProperties( 'title' )->first() ) ?>"
+					>
+				<?php endforeach ?>
+			<?php endif ?>
+		</a>
+
+		<?= $this->partial(
+			/** client/html/common/partials/badges
+			 * Relative path to the badges partial template file
+			 *
+			 * Partials are templates which are reused in other templates and generate
+			 * reoccuring blocks filled with data from the assigned values. The badges
+			 * partial creates an HTML block for the product badges.
+			 *
+			 * The partial template files are usually stored in the templates/common/partials/ folder
+			 * of the core or the extensions. The configured path to the partial file must
+			 * be relative to the templates/ folder, e.g. "common/partials/badges.php".
+			 *
+			 * @param string Relative path to the template file
+			 * @since 2022.04
+			 */
+			$this->config( 'client/html/common/partials/badges', 'common/partials/badges' )
+		) ?>
+	</figure>
+	<div class="product-details">
+		<div class="category-list">
+			<a href="category.html" class="product-category">Category</a>
+		</div>
+		<div class="product-title">
+			<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>"><?= $enc->html( $productItem->getName(), $enc::TRUST ) ?></a>
+		</div>
+		<div class="ratings-container">
+			<div class="product-ratings">
+				<span class="ratings" style="width:80%"></span>
+				<!-- End .ratings -->
+				<span class="tooltiptext tooltip-top"></span>
+			</div>
+			<!-- End .product-ratings -->
+		</div>
+		<!-- End .product-container -->
+		<div class="price-box">
+			<del class="old-price">$59.00</del>
+			<span class="product-price">$49.00</span>
+		</div>
+		<!-- End .price-box -->
+		<div class="product-action">
+			<a href="wishlist.html" class="btn-icon-wish" title="wishlist"><i
+					class="icon-heart"></i></a>
+			<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>" class="btn-icon btn-add-cart"><i
+					class="icon-shopping-cart"></i><span>ADD TO CART</span></a>
+			<a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i
+					class="fas fa-external-link-alt"></i></a>
+		</div>
+	</div>
+	<!-- End .product-details -->
+</div>
 
 <?php endforeach ?>

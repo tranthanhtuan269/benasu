@@ -9,7 +9,7 @@ $enc = $this->encoder();
 
 
 ?>
-<div class="badges">
-	<span class="badge-item new"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
-	<span class="badge-item sale"><?= $enc->html( $this->translate( 'client', 'Sale' ) ) ?></span>
+<div class="label-group">
+	<span class="product-label label-hot"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
+	<span class="product-label label-sale"><?= $enc->html( $this->translate( 'client', 'Sale' ) ) ?></span>
 </div>
