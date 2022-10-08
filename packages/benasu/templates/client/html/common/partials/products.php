@@ -416,7 +416,7 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 		</div>
 		<div class="ratings-container">
 			<div class="product-ratings">
-				<span class="ratings" style="width:80%"></span>
+				<span class="ratings" style="width:100%"></span>
 				<!-- End .ratings -->
 				<span class="tooltiptext tooltip-top"></span>
 			</div>

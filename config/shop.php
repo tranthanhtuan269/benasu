@@ -156,7 +156,8 @@ return $routes + [
 				'lists' => [
 					'basket-add' => true, // shows add to basket in list views
 					'enable' => false,
-					// 'infinite-scroll' => true, // load more products in list view
+					'cache' => false,
+					'infinite-scroll' => false, // load more products in list view
 					// 'size' => 48, // number of products per page
 				],
 				'selection' => [
