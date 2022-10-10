@@ -9,8 +9,8 @@ $(document).ready(function(){
             dataType: 'json',
             url: '/jsonapi/product?filter[f_catid]=' + cate_id + '&include=media,price', // returned from OPTIONS call
         }).done( function( result ) {
-            // console.log(result.data)
             var data = result.data;
+            // console.log(data);
             var included = result.included;
             var products = [];
             var medias = [];
@@ -27,9 +27,8 @@ $(document).ready(function(){
 
             for(var i = 0; i < data.length; i++){ // lay danh sach product thuoc catalog
                 var product = data[i].attributes;
-                var metalistMedia = data[i].relationships.media.data;
-                var metalistPrice = data[i].relationships.price.data;
-                console.log(metalistPrice)
+                var metalistMedia = (typeof data[i].relationships.media !== 'undefined') ? data[i].relationships.media.data : [];
+                var metalistPrice = (typeof data[i].relationships.price !== 'undefined') ? data[i].relationships.price.data : [];
                 product.images = [];
                 product.prices = [];
                 
@@ -39,7 +38,8 @@ $(document).ready(function(){
                 }
                 
                 for(var j = 0; j < metalistPrice.length; j++){ // lay danh sach gia cua moi product
-                    var price = prices.find(x => x.id === metalistPrice[j].id).attributes['price.value'];
+                    // var price = prices.find(x => x.id === metalistPrice[j].id).attributes['price.value'];
+                    var price = prices.find(x => x.id === metalistPrice[j].id).attributes;
                     product.prices.push(price)
                 }
                 products.push(product);
@@ -72,7 +72,7 @@ $(document).ready(function(){
                                 </div>\
                                 <!-- End .product-container -->\
                                 <div class="price-box">\
-                                    <span class="product-price">$'+products[i].prices[0]+'</span>\
+                                    <span class="product-price">$'+format("en-US", "USD", products[i].prices[0]['price.value'] - products[i].prices[0]['price.rebate'])+'</span>\
                                 </div>\
                                 <!-- End .price-box -->\
                             </div>\
@@ -83,3 +83,16 @@ $(document).ready(function(){
         });
     }
 })
+
+function format (locale, currency, number) {
+    return new Intl.NumberFormat(locale, { 
+      style: 'currency',
+      currency, 
+      currencyDisplay: "code" 
+    })
+    .formatToParts(number)
+    .filter(x => x.type !== "currency")
+    .map(x => x.value)
+    .join("")
+    .trim()
+  }
