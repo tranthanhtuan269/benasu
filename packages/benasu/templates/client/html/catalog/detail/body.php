@@ -45,8 +45,6 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
  * @see client/html/catalog/product/basket-add
  * @see client/html/basket/related/basket-add
  */
-
-
 ?>
 <?php if( isset( $this->detailProductItem )  && false) : ?>
 	<div class="aimeos catalog-detail" itemscope itemtype="http://schema.org/Product" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
@@ -766,7 +764,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 			</div><!-- End .row -->
 		</div><!-- End .product-single-container -->
 
-		<div class="product-single-tabs">
+		<div class="product-single-tabs catalog-detail-additional">
 			<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item">
 					<a class="nav-link active" id="product-tab-desc" data-toggle="tab"
