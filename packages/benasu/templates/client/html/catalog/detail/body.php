@@ -642,7 +642,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 	$currency = substr($this->translate('currency', $prices->getCurrencyId()->first()), -1, 1);
 ?>
 
-<main class="main catalog-detail">
+<main class="main">
 	<div class="container">
 		<nav aria-label="breadcrumb" class="breadcrumb-nav">
 			<ol class="breadcrumb">
@@ -801,106 +801,129 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 
 				<div class="tab-pane fade" id="product-tags-content" role="tabpanel"
 					aria-labelledby="product-tab-tags">
+
 					<?php if( !$this->get( 'detailAttributeMap', map() )->isEmpty() || !$this->get( 'detailPropertyMap', map() )->isEmpty() ) : ?>
+
+						<div class="block attributes">
+							<table class="table table-striped mt-2">
+								<tbody>
+
+									<?php foreach( $this->get( 'detailAttributeMap', map() ) as $type => $attrItems ) : ?>
+										<?php foreach( $attrItems as $attrItem ) : ?>
+
+											<tr class="item <?= ( $ids = $attrItem->get( 'parent' ) ) ? 'subproduct ' . map( $ids )->prefix( 'subproduct-' )->join( ' ' ) : '' ?>">
+												<td class="name"><?= $enc->html( $this->translate( 'client/code', $type ), $enc::TRUST ) ?></td>
+												<td class="value">
+													<div class="media-list">
+
+														<?php foreach( $attrItem->getListItems( 'media', 'icon' ) as $listItem ) : ?>
+															<?php if( ( $refitem = $listItem->getRefItem() ) !== null ) : ?>
+																<?= $this->partial(
+																	$this->config( 'client/html/common/partials/media', 'common/partials/media' ),
+																	['item' => $refitem, 'boxAttributes' => ['class' => 'media-item']]
+																) ?>
+															<?php endif ?>
+														<?php endforeach ?>
+
+													</div><!--
+													--><span class="attr-name"><?= $enc->html( $attrItem->getName() ) ?></span>
+
+													<?php foreach( $attrItem->getRefItems( 'text', 'short' ) as $textItem ) : ?>
+														<div class="attr-short"><?= $enc->html( $textItem->getContent() ) ?></div>
+													<?php endforeach ?>
+
+													<?php foreach( $attrItem->getRefItems( 'text', 'long' ) as $textItem ) : ?>
+														<div class="attr-long"><?= $enc->html( $textItem->getContent() ) ?></div>
+													<?php endforeach ?>
+
+												</td>
+											</tr>
+
+										<?php endforeach ?>
+									<?php endforeach ?>
+
+									<?php foreach( $this->get( 'detailPropertyMap', map() ) as $type => $propItems ) : ?>
+										<?php foreach( $propItems as $propItem ) : ?>
+
+											<tr class="item <?= ( $id = $propItem->get( 'parent' ) ) ? 'subproduct subproduct-' . $id : '' ?>">
+												<td class="name"><?= $enc->html( $this->translate( 'client/code', $propItem->getType() ), $enc::TRUST ) ?></td>
+												<td class="value"><?= $enc->html( $propItem->getValue() ) ?></td>
+											</tr>
+
+										<?php endforeach ?>
+									<?php endforeach ?>
+
+								</tbody>
+							</table>
+						</div>
+
+						<?php endif ?>
 				</div><!-- End .tab-pane -->
 
 				<div class="tab-pane fade" id="product-reviews-content" role="tabpanel"
 					aria-labelledby="product-tab-reviews">
-					<div class="product-reviews-content">
-						<h3 class="reviews-title">1 review for <?= $enc->html( $this->detailProductItem->getName(), $enc::TRUST ) ?></h3>
-
-						<div class="comment-list">
-							<div class="comments">
-								<figure class="img-thumbnail">
-									<img src="/assets/images/blog/author.jpg" alt="author" width="80"
-										height="80">
-								</figure>
-
-								<div class="comment-block">
-									<div class="comment-header">
-										<div class="comment-arrow"></div>
-
-										<div class="ratings-container float-sm-right">
-											<div class="product-ratings">
-												<span class="ratings" style="width:60%"></span>
-												<!-- End .ratings -->
-												<span class="tooltiptext tooltip-top"></span>
-											</div><!-- End .product-ratings -->
-										</div>
-
-										<span class="comment-by">
-											<strong>Joe Doe</strong> – April 12, 2018
-										</span>
-									</div>
-
-									<div class="comment-content">
-										<p>Excellent.</p>
-									</div>
+					<div class="reviews container-fluid block" data-productid="<?= $enc->attr( $this->detailProductItem->getId() ) ?>">
+						<div class="row">
+							<div class="col-md-4 rating-list">
+								<div class="rating-numbers">
+									<div class="rating-num"><?= number_format( $this->detailProductItem->getRating(), 1 ) ?>/5</div>
+									<div class="rating-total"><?= $enc->html( sprintf( $this->translate( 'client', '%1$d review', '%1$d reviews', $this->detailProductItem->getRatings() ), $this->detailProductItem->getRatings() ) ) ?></div>
+									<div class="rating-stars"><?= str_repeat( '★', (int) round( $this->detailProductItem->getRating() ) ) ?></div>
 								</div>
+								<table class="rating-dist" data-ratings="<?= $enc->attr( $this->detailProductItem->getRatings() ) ?>">
+									<tr>
+										<td class="rating-label"><label for="rating-5">★★★★★</label></td>
+										<td class="rating-percent"><progress id="rating-5" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-4">★★★★</label></td>
+										<td class="rating-percent"><progress id="rating-4" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-3">★★★</label></td>
+										<td class="rating-percent"><progress id="rating-3" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-2">★★</label></td>
+										<td class="rating-percent"><progress id="rating-2" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-1">★</label></td>
+										<td class="rating-percent"><progress id="rating-1" value="0" max="100">0</progress></td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-md-8 review-list">
+								<div class="sort">
+									<span><?= $enc->html( $this->translate( 'client', 'Sort by:' ), $enc::TRUST ) ?></span>
+									<ul>
+										<li>
+											<a class="sort-option option-ctime active" href="<?= $enc->attr( $this->link( 'client/jsonapi/url', ['resource' => 'review', 'filter' => ['f_refid' => $this->detailProductItem->getId()], 'sort' => '-ctime'] ) ) ?>">
+												<?= $enc->html( $this->translate( 'client', 'Latest' ), $enc::TRUST ) ?>
+											</a>
+										</li>
+										<li>
+											<a class="sort-option option-rating" href="<?= $enc->attr( $this->link( 'client/jsonapi/url', ['resource' => 'review', 'filter' => ['f_refid' => $this->detailProductItem->getId()], 'sort' => '-rating,-ctime'] ) ) ?>">
+												<?= $enc->html( $this->translate( 'client', 'Rating' ), $enc::TRUST ) ?>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="review-items">
+									<div class="review-item prototype">
+										<div class="review-name"></div>
+										<div class="review-ctime"></div>
+										<div class="review-rating">★</div>
+										<div class="review-comment"></div>
+										<div class="review-response">
+											<div class="review-vendor"><?= $enc->html( $this->translate( 'client', 'Vendor response' ) ) ?></div>
+										</div>
+										<div class="review-show"><a href="#"><?= $enc->html( $this->translate( 'client', 'Show' ) ) ?></a></div><!--
+									--></div>
+								</div>
+								<a class="btn btn-primary more" href="#"><?= $enc->html( $this->translate( 'client', 'More reviews' ), $enc::TRUST ) ?></a>
 							</div>
 						</div>
-
-						<div class="divider"></div>
-
-						<div class="add-product-review">
-							<h3 class="review-title">Add a review</h3>
-
-							<form action="#" class="comment-form m-0">
-								<div class="rating-form">
-									<label for="rating">Your rating <span class="required">*</span></label>
-									<span class="rating-stars">
-										<a class="star-1" href="#">1</a>
-										<a class="star-2" href="#">2</a>
-										<a class="star-3" href="#">3</a>
-										<a class="star-4" href="#">4</a>
-										<a class="star-5" href="#">5</a>
-									</span>
-
-									<select name="rating" id="rating" required="" style="display: none;">
-										<option value="">Rate…</option>
-										<option value="5">Perfect</option>
-										<option value="4">Good</option>
-										<option value="3">Average</option>
-										<option value="2">Not that bad</option>
-										<option value="1">Very poor</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<label>Your review <span class="required">*</span></label>
-									<textarea cols="5" rows="6" class="form-control form-control-sm"></textarea>
-								</div><!-- End .form-group -->
-
-
-								<div class="row">
-									<div class="col-md-6 col-xl-12">
-										<div class="form-group">
-											<label>Name <span class="required">*</span></label>
-											<input type="text" class="form-control form-control-sm" required>
-										</div><!-- End .form-group -->
-									</div>
-
-									<div class="col-md-6 col-xl-12">
-										<div class="form-group">
-											<label>Email <span class="required">*</span></label>
-											<input type="text" class="form-control form-control-sm" required>
-										</div><!-- End .form-group -->
-									</div>
-
-									<div class="col-md-12">
-										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input"
-												id="save-name" />
-											<label class="custom-control-label mb-0" for="save-name">Save my
-												name, email, and website in this browser for the next time I
-												comment.</label>
-										</div>
-									</div>
-								</div>
-
-								<input type="submit" class="btn btn-primary" value="Submit">
-							</form>
-						</div><!-- End .add-product-review -->
 					</div><!-- End .product-reviews-content -->
 				</div><!-- End .tab-pane -->
 			</div><!-- End .tab-content -->
