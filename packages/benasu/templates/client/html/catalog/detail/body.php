@@ -661,9 +661,11 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 						<div class="label-group">
 							<div class="product-label label-hot">HOT</div>
 
+							<?php if($rebate > 0): ?>
 							<div class="product-label label-sale">
-								-16%
+								<?php echo $this->number((- $rebate)  * 100 / $price, 0) . '%'; ?>
 							</div>
+							<?php endif ?>
 						</div>
 
 						<div class="product-single-carousel owl-carousel owl-theme show-nav-hover">
