@@ -415,9 +415,6 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 		
 	</figure>
 	<div class="product-details">
-		<div class="category-list">
-			<a href="category.html" class="product-category">Category</a>
-		</div>
 		<div class="product-title">
 			<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>"><?= $enc->html( $productItem->getName(), $enc::TRUST ) ?></a>
 		</div>

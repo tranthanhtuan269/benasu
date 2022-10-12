@@ -344,20 +344,22 @@ AimeosCatalogDetail = {
 	 */
 	onAddBasket() {
 
-		$(document).on("submit", ".product form.basket", ev => {
-			Aimeos.createOverlay();
+		// $(document).on("submit", ".product form.basket", ev => {
+		// 	Aimeos.createOverlay();
 
-			fetch($(ev.currentTarget).attr("action"), {
-				body: new FormData(ev.currentTarget),
-				method: 'POST'
-			}).then(response => {
-				return response.text();
-			}).then(data => {
-				Aimeos.createContainer(AimeosBasket.updateBasket(data));
-			});
+		// 	fetch($(ev.currentTarget).attr("action"), {
+		// 		body: new FormData(ev.currentTarget),
+		// 		method: 'POST'
+		// 	}).then(response => {
+		// 		return response.text();
+		// 	}).then(data => {
+		// 		Aimeos.createContainer(AimeosBasket.updateBasket(data));
+		// 	});
 
-			return false;
-		});
+		// 	return false;
+		// });
+
+		
 	},
 
 

@@ -45,11 +45,8 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
  * @see client/html/catalog/product/basket-add
  * @see client/html/basket/related/basket-add
  */
-
-
 ?>
-<?php if( isset( $this->detailProductItem ) ) : ?>
-
+<?php if( isset( $this->detailProductItem )  && false) : ?>
 	<div class="aimeos catalog-detail" itemscope itemtype="http://schema.org/Product" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 		<div class="container-xxl">
 
@@ -434,12 +431,12 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 										<?php foreach( $mediaItems as $id => $mediaItem ) : ?>
 
 											<li class="item">
-												<a href="<?= $this->content( $mediaItem->getUrl( true ), $mediaItem->getFileSystem() ) ?>"
+												<a href="<?= $this->content( $mediaItem->getUrl(), $mediaItem->getFileSystem() ) ?>"
 													title="<?= $enc->attr( $mediaItem->getProperties( 'title' )->first( $mediaItem->getLabel() ) ) ?>">
 													<img class="media-image"
 														alt="<?= $enc->attr( $mediaItem->getProperties( 'title' )->first( $mediaItem->getLabel() ) ) ?>"
 														src="<?= $enc->attr( $this->content( $mediaItem->getPreview(), $mediaItem->getFileSystem() ) ) ?>"
-														srcset="<?= $enc->attr( $this->imageset( $mediaItem->getPreviews( true ), $mediaItem->getFileSystem() ) ) ?>"
+														srcset="<?= $enc->attr( $this->imageset( $mediaItem->getPreviews(), $mediaItem->getFileSystem() ) ) ?>"
 													>
 													<span class="media-name"><?= $enc->html( $mediaItem->getProperties( 'title' )->first( $mediaItem->getLabel() ) ) ?></span>
 												</a>
@@ -583,7 +580,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 											<img class="lazy-image"
 												alt="<?= $enc->attr( $mediaItem->getProperties( 'title' )->first() ) ?>"
 												data-src="<?= $enc->attr( $this->content( $mediaItem->getPreview(), $mediaItem->getFileSystem() ) ) ?>"
-												data-srcset="<?= $enc->attr( $this->imageset( $mediaItem->getPreviews( true ), $mediaItem->getFileSystem() ) ) ?>"
+												data-srcset="<?= $enc->attr( $this->imageset( $mediaItem->getPreviews(), $mediaItem->getFileSystem() ) ) ?>"
 												sizes="<?= $enc->attr( $this->config( 'client/html/common/imageset-sizes', '(min-width: 260px) 240px, 100vw' ) ) ?>"
 											>
 										</div>
@@ -620,3 +617,359 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 	</div>
 
 <?php endif ?>
+
+<?php
+	// print_r($this->detailProductItem->getId());die;
+	$listMedia = $this->get( 'detailMediaItems', map() );
+	foreach($listMedia as $media){
+		// echo $enc->attr($this->content( $media->getPreview(), $media->getFileSystem() ));die;
+	}
+	$format = array(
+		/// Price quantity format with quantity (%1$s)
+		'quantity' => $this->translate( 'client', 'from %1$s' ),
+		/// Price shipping format with shipping / payment cost value (%1$s) and currency (%2$s)
+		'costs' => ( $this->get( 'costsItem', true ) ? $this->translate( 'client', '+ %1$s %2$s/item' ) : $this->translate( 'client', '%1$s %2$s' ) ),
+		/// Rebate format with rebate value (%1$s) and currency (%2$s)
+		'rebate' => $this->translate( 'client', '%1$s %2$s off' ),
+		/// Rebate percent format with rebate percent value (%1$s)
+		'rebate%' => $this->translate( 'client', '-%1$s%%' ),
+	);
+	$prices = $this->detailProductItem->getRefItems( 'price', null, 'default' );
+	$price = $prices->getValue()->first();
+	$rebate = $prices->getRebate()->first();
+	$currency = substr($this->translate('currency', $prices->getCurrencyId()->first()), -1, 1);
+?>
+
+<main class="main">
+	<input type="hidden" id="product-id" value="<?php echo $this->detailProductItem->getId(); ?>">
+	<div class="container">
+		<nav aria-label="breadcrumb" class="breadcrumb-nav">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/"><i class="icon-home"></i></a></li>
+				<li class="breadcrumb-item"><a href="#">Products</a></li>
+			</ol>
+		</nav>
+
+		<div class="product-single-container product-single-default">
+			<div class="cart-message d-none">
+				<strong class="single-cart-notice">“<?= $enc->html( $this->detailProductItem->getName(), $enc::TRUST ) ?>”</strong>
+				<span>has been added to your cart.</span>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-5 col-md-6 product-single-gallery">
+					<div class="product-slider-container">
+						<div class="label-group">
+							<div class="product-label label-hot">HOT</div>
+
+							<?php if($rebate > 0): ?>
+							<div class="product-label label-sale">
+								<?php echo $this->number((- $rebate)  * 100 / $price, 0) . '%'; ?>
+							</div>
+							<?php endif ?>
+						</div>
+
+						<div class="product-single-carousel owl-carousel owl-theme show-nav-hover">
+							<?php
+								foreach($listMedia as $id => $media) :
+							?>
+								<div class="product-item">
+									<?php echo $this->image( $media, '(min-width: 2000px) 1920px, (min-width: 500px) 960px, 100vw' ); ?>
+								</div>
+							<?php
+								endforeach
+							?>
+						</div>
+						<!-- End .product-single-carousel -->
+						<span class="prod-full-screen">
+							<i class="icon-plus"></i>
+						</span>
+					</div>
+
+					<div class="prod-thumbnail owl-dots">
+					<?php foreach( $listMedia as $mediaItem ) :  ?>
+
+						<div class="owl-dot">
+							<img class="item-thumb"
+								src="<?= $enc->attr( $this->content( $mediaItem->getPreview(), $mediaItem->getFileSystem() ) ) ?>"
+								alt="<?= $enc->attr( $this->translate( 'client', 'Product image' ) ) ?>"
+								width="110" height="110"
+							>
+						</div>
+
+					<?php endforeach ?>
+					</div>
+				</div><!-- End .product-single-gallery -->
+
+				<div class="col-lg-7 col-md-6 product-single-details">
+					<h1 class="product-title"><?= $enc->html( $this->detailProductItem->getName(), $enc::TRUST ) ?></h1>
+
+					<div class="ratings-container">
+						<div class="product-ratings">
+							<span class="ratings" style="width:100%"></span><!-- End .ratings -->
+							<span class="tooltiptext tooltip-top"></span>
+						</div><!-- End .product-ratings -->
+
+						<a href="#" class="rating-link">( 6 Reviews )</a>
+					</div><!-- End .ratings-container -->
+
+					<hr class="short-divider">
+
+					<div class="price-box">
+						<?php if($rebate > 0): ?>
+							<span class="old-price"><?php echo $currency . $this->number($price, 2); ?></span>
+							<span class="new-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
+						<?php else : ?>
+							<span class="new-price"><?php echo $currency . $this->number(($price), 2); ?></span>
+						<?php endif ?>
+					</div><!-- End .price-box -->
+
+					<div class="product-desc">
+						<?php foreach( $this->detailProductItem->getRefItems( 'text', 'short', 'default' ) as $textItem ) : ?>
+							<div class="short" itemprop="description"><?= $enc->html( $textItem->getContent(), $enc::TRUST ) ?></div>
+						<?php endforeach ?>
+					</div><!-- End .product-desc -->
+
+					<div class="product-action">
+						<div class="product-single-qty">
+							<input class="horizontal-quantity form-control" type="text" id="product-quantity">
+						</div><!-- End .product-single-qty -->
+
+						<a href="javascript:;" id="product-add-cart" class="btn btn-dark add-cart mr-2" title="Add to Cart">Add to
+							Cart</a>
+
+						<a href="/shop/basket" class="btn btn-gray view-cart d-none">View cart</a>
+					</div><!-- End .product-action -->
+
+					<hr class="divider mb-0 mt-0">
+
+					<div class="product-single-share mb-3">
+						<label class="sr-only">Share:</label>
+
+						<div class="social-icons mr-2">
+							<a href="#" class="social-icon social-facebook icon-facebook" target="_blank"
+								title="Facebook"></a>
+							<a href="#" class="social-icon social-twitter icon-twitter" target="_blank"
+								title="Twitter"></a>
+							<a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"
+								title="Linkedin"></a>
+							<a href="#" class="social-icon social-gplus fab fa-google-plus-g" target="_blank"
+								title="Google +"></a>
+							<a href="#" class="social-icon social-mail icon-mail-alt" target="_blank"
+								title="Mail"></a>
+						</div><!-- End .social-icons -->
+
+						<a href="wishlist.html" class="btn-icon-wish add-wishlist" title="Add to Wishlist"><i
+								class="icon-wishlist-2"></i><span>Add to
+								Wishlist</span></a>
+					</div><!-- End .product single-share -->
+				</div><!-- End .product-single-details -->
+			</div><!-- End .row -->
+		</div><!-- End .product-single-container -->
+
+		<div class="product-single-tabs catalog-detail-additional">
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="product-tab-desc" data-toggle="tab"
+						href="#product-desc-content" role="tab" aria-controls="product-desc-content"
+						aria-selected="true">Description</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" id="product-tab-tags" data-toggle="tab" href="#product-tags-content"
+						role="tab" aria-controls="product-tags-content" aria-selected="false">Additional
+						Information</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" id="product-tab-reviews" data-toggle="tab"
+						href="#product-reviews-content" role="tab" aria-controls="product-reviews-content"
+						aria-selected="false">Reviews (1)</a>
+				</li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="product-desc-content" role="tabpanel"
+					aria-labelledby="product-tab-desc">
+					<div class="product-desc-content">
+						<?php if( !( $textItems = $this->detailProductItem->getRefItems( 'text', 'long' ) )->isEmpty() ) : ?>
+							<?php foreach( $textItems as $textItem ) : ?>
+								<div class="long item"><?= $enc->html( $textItem->getContent(), $enc::TRUST ) ?></div>
+							<?php endforeach ?>
+						<?php endif ?>
+					</div><!-- End .product-desc-content -->
+				</div><!-- End .tab-pane -->
+
+				<div class="tab-pane fade" id="product-tags-content" role="tabpanel"
+					aria-labelledby="product-tab-tags">
+
+					<?php if( !$this->get( 'detailAttributeMap', map() )->isEmpty() || !$this->get( 'detailPropertyMap', map() )->isEmpty() ) : ?>
+
+						<div class="block attributes">
+							<table class="table table-striped mt-2">
+								<tbody>
+
+									<?php foreach( $this->get( 'detailAttributeMap', map() ) as $type => $attrItems ) : ?>
+										<?php foreach( $attrItems as $attrItem ) : ?>
+
+											<tr class="item <?= ( $ids = $attrItem->get( 'parent' ) ) ? 'subproduct ' . map( $ids )->prefix( 'subproduct-' )->join( ' ' ) : '' ?>">
+												<td class="name"><?= $enc->html( $this->translate( 'client/code', $type ), $enc::TRUST ) ?></td>
+												<td class="value">
+													<div class="media-list">
+
+														<?php foreach( $attrItem->getListItems( 'media', 'icon' ) as $listItem ) : ?>
+															<?php if( ( $refitem = $listItem->getRefItem() ) !== null ) : ?>
+																<?= $this->partial(
+																	$this->config( 'client/html/common/partials/media', 'common/partials/media' ),
+																	['item' => $refitem, 'boxAttributes' => ['class' => 'media-item']]
+																) ?>
+															<?php endif ?>
+														<?php endforeach ?>
+
+													</div><!--
+													--><span class="attr-name"><?= $enc->html( $attrItem->getName() ) ?></span>
+
+													<?php foreach( $attrItem->getRefItems( 'text', 'short' ) as $textItem ) : ?>
+														<div class="attr-short"><?= $enc->html( $textItem->getContent() ) ?></div>
+													<?php endforeach ?>
+
+													<?php foreach( $attrItem->getRefItems( 'text', 'long' ) as $textItem ) : ?>
+														<div class="attr-long"><?= $enc->html( $textItem->getContent() ) ?></div>
+													<?php endforeach ?>
+
+												</td>
+											</tr>
+
+										<?php endforeach ?>
+									<?php endforeach ?>
+
+									<?php foreach( $this->get( 'detailPropertyMap', map() ) as $type => $propItems ) : ?>
+										<?php foreach( $propItems as $propItem ) : ?>
+
+											<tr class="item <?= ( $id = $propItem->get( 'parent' ) ) ? 'subproduct subproduct-' . $id : '' ?>">
+												<td class="name"><?= $enc->html( $this->translate( 'client/code', $propItem->getType() ), $enc::TRUST ) ?></td>
+												<td class="value"><?= $enc->html( $propItem->getValue() ) ?></td>
+											</tr>
+
+										<?php endforeach ?>
+									<?php endforeach ?>
+
+								</tbody>
+							</table>
+						</div>
+
+						<?php endif ?>
+				</div><!-- End .tab-pane -->
+
+				<div class="tab-pane fade" id="product-reviews-content" role="tabpanel"
+					aria-labelledby="product-tab-reviews">
+					<div class="reviews container-fluid block" data-productid="<?= $enc->attr( $this->detailProductItem->getId() ) ?>">
+						<div class="row">
+							<div class="col-md-4 rating-list">
+								<div class="rating-numbers">
+									<div class="rating-num"><?= number_format( $this->detailProductItem->getRating(), 1 ) ?>/5</div>
+									<div class="rating-total"><?= $enc->html( sprintf( $this->translate( 'client', '%1$d review', '%1$d reviews', $this->detailProductItem->getRatings() ), $this->detailProductItem->getRatings() ) ) ?></div>
+									<div class="rating-stars"><?= str_repeat( '★', (int) round( $this->detailProductItem->getRating() ) ) ?></div>
+								</div>
+								<table class="rating-dist" data-ratings="<?= $enc->attr( $this->detailProductItem->getRatings() ) ?>">
+									<tr>
+										<td class="rating-label"><label for="rating-5">★★★★★</label></td>
+										<td class="rating-percent"><progress id="rating-5" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-4">★★★★</label></td>
+										<td class="rating-percent"><progress id="rating-4" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-3">★★★</label></td>
+										<td class="rating-percent"><progress id="rating-3" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-2">★★</label></td>
+										<td class="rating-percent"><progress id="rating-2" value="0" max="100">0</progress></td>
+									</tr>
+									<tr>
+										<td class="rating-label"><label for="rating-1">★</label></td>
+										<td class="rating-percent"><progress id="rating-1" value="0" max="100">0</progress></td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-md-8 review-list">
+								<div class="sort">
+									<span><?= $enc->html( $this->translate( 'client', 'Sort by:' ), $enc::TRUST ) ?></span>
+									<ul>
+										<li>
+											<a class="sort-option option-ctime active" href="<?= $enc->attr( $this->link( 'client/jsonapi/url', ['resource' => 'review', 'filter' => ['f_refid' => $this->detailProductItem->getId()], 'sort' => '-ctime'] ) ) ?>">
+												<?= $enc->html( $this->translate( 'client', 'Latest' ), $enc::TRUST ) ?>
+											</a>
+										</li>
+										<li>
+											<a class="sort-option option-rating" href="<?= $enc->attr( $this->link( 'client/jsonapi/url', ['resource' => 'review', 'filter' => ['f_refid' => $this->detailProductItem->getId()], 'sort' => '-rating,-ctime'] ) ) ?>">
+												<?= $enc->html( $this->translate( 'client', 'Rating' ), $enc::TRUST ) ?>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="review-items">
+									<div class="review-item prototype">
+										<div class="review-name"></div>
+										<div class="review-ctime"></div>
+										<div class="review-rating">★</div>
+										<div class="review-comment"></div>
+										<div class="review-response">
+											<div class="review-vendor"><?= $enc->html( $this->translate( 'client', 'Vendor response' ) ) ?></div>
+										</div>
+										<div class="review-show"><a href="#"><?= $enc->html( $this->translate( 'client', 'Show' ) ) ?></a></div><!--
+									--></div>
+								</div>
+								<a class="btn btn-primary more" href="#"><?= $enc->html( $this->translate( 'client', 'More reviews' ), $enc::TRUST ) ?></a>
+							</div>
+						</div>
+					</div><!-- End .product-reviews-content -->
+				</div><!-- End .tab-pane -->
+			</div><!-- End .tab-content -->
+		</div><!-- End .product-single-tabs -->
+
+		<?php if( !( $products = $this->detailProductItem->getRefItems( 'product', null, 'suggestion' ) )->isEmpty() ) : ?>
+
+			<div class="products-section pt-0">
+				<h2 class="section-title">Related Products</h2>
+				
+				<div class="products-slider owl-carousel owl-theme dots-top dots-small">
+					<?= $this->partial(
+						$this->config( 'client/html/common/partials/products', 'common/partials/products' ), [
+							'basket-add' => $this->config( 'client/html/catalog/detail/basket-add', false ),
+							'products' => $products, 'itemprop' => 'isRelatedTo'
+						] )
+					?>
+
+				</div>
+			</div>
+		<?php endif ?>
+
+		<hr class="mt-0 m-b-3" />
+
+		<section class="blog-section pb-0" id="sub_view_product">
+			<div class="container">
+				<div class="product-widgets-container row pb-2">
+					<div id="sub_featured_products" class="col-lg-3 col-sm-6 pb-5 pb-md-0">
+						<h4 id="title_sub_featured_products" class="section-sub-title">Featured Products</h4>
+					</div>
+
+					<div id="best_selling_products" class="col-lg-3 col-sm-6 pb-5 pb-md-0">
+						<h4 class="section-sub-title">Best Selling Products</h4>
+					</div>
+
+					<div id="lastest_products" class="col-lg-3 col-sm-6 pb-5 pb-md-0">
+						<h4 class="section-sub-title">Latest Products</h4>
+					</div>
+
+					<div id="top_rated_products" class="col-lg-3 col-sm-6 pb-5 pb-md-0">
+						<h4 class="section-sub-title">Top Rated Products</h4>
+					</div>
+				</div>
+				<!-- End .row -->
+			</div>
+		</section>
+	</div><!-- End .container -->
+</main><!-- End .main -->
