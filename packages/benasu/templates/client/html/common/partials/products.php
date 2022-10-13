@@ -393,7 +393,7 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 	$currency = substr($this->translate('currency', $prices->getCurrencyId()->first()), -1, 1);
 ?>
 
-<div class="product-default appear-animate" data-animation-name="fadeInRightShorter">
+<div class="product product-default appear-animate" data-animation-name="fadeInRightShorter">
 	<figure>
 		<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>">
 			<?php if( $mediaItem = $mediaItems->first() ) : ?>

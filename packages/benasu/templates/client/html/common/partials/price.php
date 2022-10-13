@@ -71,20 +71,16 @@ $notax = $this->translate( 'client', '+ %1$s%% VAT' );
 
 		<span class="value">
 			<?php if( $priceItem->getValue() !== null ) : ?>
-				<?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?>
+				<?php if( $priceItem->getRebate() > 0 ) : ?>
+					<del class="old-price"><?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?></del>
+					<?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue() - $priceItem->getRebate(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?>
+				<?php else : ?>
+					<?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?>
+				<?php endif ?>
 			<?php else : ?>
 				<?= $enc->html( $this->translate( 'client', 'on request' ) ) ?>
 			<?php endif ?>
 		</span>
-
-		<?php if( $priceItem->getValue() > 0 && $priceItem->getRebate() > 0 ) : ?>
-			<span class="rebate">
-				<?= $enc->html( sprintf( $format['rebate'], $this->number( $priceItem->getRebate() ), $currency ), $enc::TRUST ) ?>
-			</span>
-			<span class="rebatepercent">
-				<?= $enc->html( sprintf( $format['rebate%'], $this->number( round( $priceItem->getRebate() * 100 / ( $priceItem->getValue() + $priceItem->getRebate() ) ), 0 ) ), $enc::TRUST ) ?>
-			</span>
-		<?php endif ?>
 
 		<?php if( $this->get( 'all' ) || $priceItem->getCosts() > 0 ) : ?>
 			<span class="costs">

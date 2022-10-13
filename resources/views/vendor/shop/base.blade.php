@@ -35,6 +35,7 @@
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('vendor/shop/themes/default/aimeos.css?v=' . config( 'shop.version', 1 ) ) }}" />
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="/assets/css/demo4.min.css">
@@ -678,6 +679,8 @@
     <script src="/assets/js/optional/isotope.pkgd.min.js"></script>
     <script src="/assets/js/plugins.min.js"></script>
     <script src="/assets/js/jquery.appear.min.js"></script>
+
+	<script src="{{ asset('vendor/shop/themes/default/aimeos.js?v=' . config( 'shop.version', 1 ) ) }}"></script>
 
     <!-- Main JS File -->
     <script src="/assets/js/main.min.js"></script>

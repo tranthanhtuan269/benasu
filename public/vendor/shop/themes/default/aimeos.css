@@ -104,7 +104,6 @@ img {
 }
 
 .aimeos .btn {
-	width: 12rem;
 	vertical-align: top;
 	border-radius: var(--ai-radius);
 	margin: .5rem 0;
@@ -168,69 +167,6 @@ img {
 
 .aimeos .input-lg {
 	height: auto;
-}
-
-.aimeos,
-.aimeos h1, .aimeos h2,
-.aimeos h3, .aimeos h4 {
-	font-weight: normal;
-	font-size: 100%;
-	color: var(--ai-primary);
-}
-
-.aimeos h1, .aimeos h2 {
-	text-transform: uppercase;
-}
-
-.aimeos h1 {
-	font-size: 125%;
-	letter-spacing: 1.5px;
-}
-
-.aimeos h2 {
-	font-size: 110%;
-	letter-spacing: 1.5px;
-}
-
-.aimeos a:link:not(.btn),
-.aimeos a:visited:not(.btn) {
-	color: var(--ai-primary);
-	text-decoration: none;
-}
-
-.aimeos a:link:not(.btn):hover,
-.aimeos a:visited:not(.btn):hover {
-	color: var(--ai-secondary);
-	text-decoration: none;
-}
-
-.aimeos input {
-	border: 1px solid var(--ai-tertiary);
-	background-color: var(--ai-bg);
-	color: var(--ai-secondary);
-}
-
-.aimeos input:focus {
-	outline: none;
-}
-
-.aimeos input:disabled,
-.aimeos select:disabled
-.aimeos textarea:disabled {
-	border-color: var(--ai-bg-alt);
-	background-color: var(--ai-bg-alt);
-}
-
-.aimeos .minibutton {
-	color: var(--ai-secondary);
-	vertical-align: middle;
-	display: inline-block;
-	font-size: 100%;
-	min-width: 1rem;
-	padding: 0;
-	margin: 0;
-	border: none;
-	background-color: var(--ai-bg);
 }
 
 .aimeos .minibutton::-moz-focus-inner {

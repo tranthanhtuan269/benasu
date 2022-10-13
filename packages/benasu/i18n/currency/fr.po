@@ -1300,7 +1300,7 @@ msgstr "USh"
 #. symbol: $, US$
 #. sequence: <sign><amount>
 msgid "USD"
-msgstr "US$"
+msgstr "$"
 
 #. Uruguayan peso
 #. reference: https://en.wikipedia.org/wiki/Uruguayan_peso
