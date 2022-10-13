@@ -475,6 +475,13 @@ $(document).ready(function(){
             }
         });
     }
+
+	$('.catalog-detail-additional .nav-link').click(function(){
+		$('.catalog-detail-additional .nav-link').removeClass('active');
+		$(this).addClass('active');
+		$('.catalog-detail-additional .tab-content .tab-pane').removeClass('show').removeClass('active');
+		$('#' + $(this).attr('aria-controls')).addClass('show').addClass('active');
+	})
 })
 
 function format (locale, currency, number) {
@@ -488,4 +495,5 @@ function format (locale, currency, number) {
     .map(x => x.value)
     .join("")
     .trim()
-  }
+}
+

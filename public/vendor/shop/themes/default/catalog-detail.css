@@ -656,6 +656,7 @@
 	text-transform: uppercase;
 	color: var(--ai-primary);
 	padding: 16px;
+	cursor: pointer;
 }
 
 .catalog-detail-additional .nav-tabs .nav-link.active:not(.btn) {
@@ -937,4 +938,7 @@
 
 .aimeos.basket-standard .btn{
 	margin: 0;
+}
+.catalog-detail-additional .nav-tabs{
+	padding-bottom: 0;
 }
