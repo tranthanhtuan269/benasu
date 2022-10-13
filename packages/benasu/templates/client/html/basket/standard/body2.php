@@ -10,38 +10,24 @@ $enc = $this->encoder();
 
 
 ?>
+<ul class="checkout-progress-bar d-flex justify-content-center flex-wrap">
+	<li class="active">
+		<a href="cart.html">Shopping Cart</a>
+	</li>
+	<li>
+		<a href="checkout.html">Checkout</a>
+	</li>
+	<li class="disabled">
+		<a href="cart.html">Order Complete</a>
+	</li>
+</ul>
 <?php if( isset( $this->standardBasket ) ) : ?>
-
 	<section class="aimeos basket-standard" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 		<div class="container-xxl">
-
 			<form method="POST" action="<?= $enc->attr( $this->link( 'client/html/basket/standard/url' ) ) ?>">
 				<?= $this->csrf()->formfield() ?>
 
-				<div class="row header">
-					<h1 class="col-12 col-sm-6"><?= $enc->html( $this->translate( 'client', 'Basket' ), $enc::TRUST ) ?></h1>
-
-					<?php if( $this->get( 'contextUserId' ) ) : ?>
-						<div class="col-12 col-sm-6">
-							<div class="input-group basket-save">
-								<input class="form-control basket-name" type="text" maxlength="255"
-									placeholder="<?= $enc->attr( $this->translate( 'client', 'Basket name' ) ) ?>"
-									name="<?= $enc->attr( $this->formparam( 'b_name' ) ) ?>"
-								>
-								<button class="btn" type="submit"
-									formaction="<?= $enc->attr( $this->link( 'client/html/basket/standard/url', ['b_action' => 'save'] ) ) ?>">
-									<?= $enc->attr( $this->translate( 'client', 'Save' ) ) ?>
-								</button>
-							</div>
-						</div>
-					<?php endif ?>
-				</div>
-
 				<div class="common-summary-detail">
-					<div class="header">
-						<h2><?= $enc->html( $this->translate( 'client', 'Details' ), $enc::TRUST ) ?></h2>
-					</div>
-
 					<div class="basket">
 						<?= $this->partial(
 							/** client/html/basket/standard/summary/detail
@@ -65,19 +51,13 @@ $enc = $this->encoder();
 					</div>
 				</div>
 
-				<div class="basket-standard-coupon">
-					<div class="header">
-						<h2><?= $enc->html( $this->translate( 'client', 'Coupon codes' ) ) ?></h2>
-					</div>
-
+				<div>
 					<div class="content">
-
 						<div class="input-group coupon-new">
 							<input class="form-control coupon-code" type="text" maxlength="255"
 								placeholder="<?= $enc->attr( $this->translate( 'client', 'Coupon codes' ) ) ?>"
 								name="<?= $enc->attr( $this->formparam( 'b_coupon' ) ) ?>"
-							><!--
-							--><button class="btn btn-primary" type="submit"><?= $enc->html( $this->translate( 'client', 'Apply' ) ) ?></button>
+							><button class="btn btn-primary" type="submit"><?= $enc->html( $this->translate( 'client', 'Apply' ) ) ?></button>
 						</div>
 
 						<?php if( !( $coupons = $this->standardBasket->getCoupons() )->isEmpty() ) : ?>

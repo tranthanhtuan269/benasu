@@ -23,7 +23,7 @@
 @stop
 
 @section('aimeos_body')
-<main class="main">
+<main class="main" id="basket-page">
 	<div class="container">
         <?= $aibody['basket/standard'] ?? '' ?>
         <?= $aibody['basket/related'] ?? '' ?>
