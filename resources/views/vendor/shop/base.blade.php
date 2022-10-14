@@ -35,7 +35,6 @@
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="{{ asset('vendor/shop/themes/default/aimeos.css?v=' . config( 'shop.version', 1 ) ) }}" />
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="/assets/css/demo4.min.css">

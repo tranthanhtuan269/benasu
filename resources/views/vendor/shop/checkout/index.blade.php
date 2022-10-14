@@ -13,7 +13,9 @@
 @stop
 
 @section('aimeos_body')
-    <div class="container-fluid">
+<main class="main" id="basket-page">
+	<div class="container">
         <?= $aibody['checkout/standard'] ?>
     </div>
+</div>
 @stop

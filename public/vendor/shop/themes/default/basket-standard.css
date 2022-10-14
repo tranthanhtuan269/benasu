@@ -1,4 +1,56 @@
 /* Standard basket */
+:root {
+	font-size: 10px;
+	--ai-bg: #FFF;
+	--ai-bg-alt: #F6F6F6;
+	--ai-primary: #282828;
+	--ai-primary-alt: #282828;
+	--ai-secondary: #555;
+	--ai-secondary-alt: #555;
+	--ai-tertiary: #CCC;
+	--ai-tertiary-alt: #F6F6F6;
+	--ai-danger: #A00000;
+	--ai-success: #006000;
+	--ai-warning: #FFA500;
+	--ai-radius: 0;
+	--ai-radius-round: 50%;
+	--ai-product-image-ratio: 3/4;
+}
+
+.btn {
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-color: #212529;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: 1px;
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: 0.375rem;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    color: var(--bs-btn-color);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border-radius: var(--bs-btn-border-radius);
+    background-color: var(--bs-btn-bg);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
 .basket-standard {
 	padding: 2rem 0;
@@ -26,11 +78,17 @@
 	vertical-align: middle;
 	display: inline-block;
 	width: 49%;
+	border: none;
 }
 
 .basket-standard-coupon .header h2 {
-	font-size: 1rem;
+	font-size: 1.8rem;
 	margin: 10px 0;
+	text-transform: uppercase;
+	font-weight: normal;
+    color: var(--ai-primary);
+	letter-spacing: 1.5px;
+
 }
 
 .basket-standard-coupon .attr-list {
@@ -61,7 +119,13 @@
 }
 
 .basket-standard-coupon .coupon-new .btn {
-	width: 5rem;
+	/* width: 5rem; */
+}
+#basket-page .btn-primary:hover, #basket-page .btn-primary:focus,#basket-page .btn-primary.focus {
+    border-color: none;
+    background-color: unset;
+    box-shadow: none;
+	color: var(--ai-primary);
 }
 
 .basket-standard-coupon .coupon-new .coupon-code {
@@ -86,6 +150,165 @@
 #basket-page .basket-standard-coupon .coupon-new .btn{
 	padding: 1.2rem 4.8rem;
 }
+
+#basket-page .basket-standard-coupon .btn{
+	padding: 10px;
+    margin: 0 15px;
+}
+
+#basket-page .error-list .error-item{
+	color:#A00000;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#basket-page .coupon-header{
+	width: 60%;
+	float: left;
+	font-size: 18px;
+	text-align: center;
+}
+
+#basket-page .coupon-content{
+	width: 40%;
+	float: left;
+	font-size: 18px;
+	text-align: center;
+}
+
+
+#basket-page .coupon-content input{
+	border-bottom: 1px solid #666;
+}
+
+.aimeos .form-control {
+    border: none;
+    border-radius: var(--ai-radius);
+    border-bottom: 1px solid var(--ai-secondary);
+    background-color: var(--ai-bg);
+    color: var(--ai-secondary);
+    box-shadow: none;
+	font-size: 1.5rem;
+}
+
+.aimeos .button-group .btn {
+    margin: 0.25rem;
+}
+
+.aimeos .button-group {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.aimeos .btn {
+    vertical-align: top;
+    border-radius: var(--ai-radius);
+    margin: 0.5rem 0;
+    color: var(--ai-primary);
+    border: 1px solid var(--ai-secondary);
+    background-color: var(--ai-bg);
+    letter-spacing: 1.5px;
+}
+
+.aimeos .btn-primary, .aimeos .btn-primary:visited {
+    background-color: var(--ai-primary);
+    border: 1px solid var(--ai-primary);
+    color: var(--ai-bg);
+    letter-spacing: 1.5px;
+	padding: 1.2rem 6rem
+}
+
+.aimeos input {
+    border: 1px solid var(--ai-tertiary);
+    background-color: var(--ai-bg);
+    color: var(--ai-secondary);
+	padding:0.25rem 
+}
+
+.aimeos input:focus {
+	outline: none;
+}
+
+.basket-bulk .row {
+    align-items: center;
+	padding:0.25rem 0
+}
+
+.basket-bulk .headline, .basket-bulk .bulk-content .details {
+    border-bottom: 1px solid var(--ai-secondary);
+}
+
+#basket-page .row {
+	--bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+#basket-page .row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+#basket-page .row.g-0>* {
+	padding-left: 0;
+    padding-right: 0;
+}
+
+#basket-page .input-group {
+    position: relative;
+    display: flex;
+	flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+#basket-page .input-group:focus {
+	outline: none;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.basket-standard-coupon .coupon-new .btn {
+    width: 5rem;
+}
+
+.basket-standard-coupon .btn-primary, .basket-standard-coupon .btn-primary:hover {
+    background: none;
+    border: none;
+    color: var(--ai-primary);
+    font-weight: bold;
+    font-size: 125%;
+}
+
+#basket-page .product-list {
+	display: block;
+}
+
+#basket-page .product-list .content {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 12px;
+}
+
+#basket-page .product-list figure {
+	margin: 0 auto;
+}
+
+#basket-page  .product-list .product-details {
+    max-width: unset;
+}
+
 
 @media (max-width: 480px) {
 	.basket-standard-coupon .header,

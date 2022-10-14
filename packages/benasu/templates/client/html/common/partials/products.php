@@ -392,60 +392,63 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 	$rebate = $prices->getRebate()->first();
 	$currency = substr($this->translate('currency', $prices->getCurrencyId()->first()), -1, 1);
 ?>
-
-<div class="product product-default appear-animate" data-animation-name="fadeInRightShorter">
-	<figure>
-		<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>">
-			<?php if( $mediaItem = $mediaItems->first() ) : ?>
-				<?php foreach( $mediaItems as $mediaItem ) : ?>
-					<img class="product-image"
-						src="<?= $enc->attr( $this->content( $mediaItem->getPreview(), $mediaItem->getFileSystem() ) ) ?>"
-						alt="<?= $enc->attr( $mediaItem->getProperties( 'title' )->first() ) ?>"
-					>
-				<?php endforeach ?>
-			<?php endif ?>
-		</a>
-
-		<div class="label-group">
-			<span class="product-label label-hot"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
-			<?php if($rebate > 0): ?>
-			<span class="product-label label-sale"><?= $enc->html( sprintf( $format['rebate%'], $this->number( round( $rebate * 100 / ( $price + $rebate ) ), 0 ) ), $enc::TRUST ) ?></span>
-			<?php endif ?>
+	<div class="product product-default appear-animate" >
+		<div>
+			<figure>
+				<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>">
+					<?php if( $mediaItem = $mediaItems->first() ) : ?>
+						<?php foreach( $mediaItems as $mediaItem ) : ?>
+							<img class="product-image"
+								src="<?= $enc->attr( $this->content( $mediaItem->getPreview(), $mediaItem->getFileSystem() ) ) ?>"
+								alt="<?= $enc->attr( $mediaItem->getProperties( 'title' )->first() ) ?>"
+							>
+						<?php endforeach ?>
+					<?php endif ?>
+				</a>
+		
+				<div class="label-group">
+					<span class="product-label label-hot"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
+					<?php if($rebate > 0): ?>
+					<span class="product-label label-sale"><?= $enc->html( sprintf( $format['rebate%'], $this->number( round( $rebate * 100 / ( $price + $rebate ) ), 0 ) ), $enc::TRUST ) ?></span>
+					<?php endif ?>
+				</div>
+				
+			</figure>
+			<div class="product-details">
+				<div class="product-title">
+					<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>"><?= $enc->html( $productItem->getName(), $enc::TRUST ) ?></a>
+				</div>
+				<div class="ratings-container">
+					<div class="product-ratings">
+						<span class="ratings" style="width:100%"></span>
+						<!-- End .ratings -->
+						<span class="tooltiptext tooltip-top"></span>
+					</div>
+					<!-- End .product-ratings -->
+				</div>
+				<!-- End .product-container -->
+				<div class="price-box">
+					<?php if($rebate > 0): ?>
+					<del class="old-price"><?php echo $currency . $this->number($price, 2); ?></del>
+					<span class="product-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
+					<?php else : ?>
+					<span class="product-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
+					<?php endif ?>
+				</div>
+				<!-- End .price-box -->
+				<div class="product-action">
+					<a href="wishlist.html" class="btn-icon-wish" title="wishlist"><i
+							class="icon-heart"></i></a>
+					<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>" class="btn-icon btn-add-cart"><i
+							class="icon-shopping-cart"></i><span>ADD TO CART</span></a>
+					<a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i
+							class="fas fa-external-link-alt"></i></a>
+				</div>
+			</div>
 		</div>
 		
-	</figure>
-	<div class="product-details">
-		<div class="product-title">
-			<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>"><?= $enc->html( $productItem->getName(), $enc::TRUST ) ?></a>
-		</div>
-		<div class="ratings-container">
-			<div class="product-ratings">
-				<span class="ratings" style="width:100%"></span>
-				<!-- End .ratings -->
-				<span class="tooltiptext tooltip-top"></span>
-			</div>
-			<!-- End .product-ratings -->
-		</div>
-		<!-- End .product-container -->
-		<div class="price-box">
-			<?php if($rebate > 0): ?>
-			<del class="old-price"><?php echo $currency . $this->number($price, 2); ?></del>
-			<span class="product-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
-			<?php else : ?>
-			<span class="product-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
-			<?php endif ?>
-		</div>
-		<!-- End .price-box -->
-		<div class="product-action">
-			<a href="wishlist.html" class="btn-icon-wish" title="wishlist"><i
-					class="icon-heart"></i></a>
-			<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>" class="btn-icon btn-add-cart"><i
-					class="icon-shopping-cart"></i><span>ADD TO CART</span></a>
-			<a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i
-					class="fas fa-external-link-alt"></i></a>
-		</div>
+		<!-- End .product-details -->
 	</div>
-	<!-- End .product-details -->
-</div>
-
+	
 <?php endforeach ?>
+
