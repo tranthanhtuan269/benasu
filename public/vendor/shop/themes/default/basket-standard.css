@@ -156,6 +156,10 @@
     margin: 0 15px;
 }
 
+#basket-page .button-group .btn-back{
+    padding: 12px 40px;
+}
+
 #basket-page .error-list .error-item{
 	color:#A00000;
 	text-align: center;

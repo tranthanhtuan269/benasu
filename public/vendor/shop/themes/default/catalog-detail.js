@@ -353,6 +353,7 @@ AimeosCatalogDetail = {
 			}).then(response => {
 				return response.text();
 			}).then(data => {
+				console.log(data);
 				Aimeos.createContainer(AimeosBasket.updateBasket(data));
 			});
 
