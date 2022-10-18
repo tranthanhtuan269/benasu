@@ -71,9 +71,9 @@
                                     <li><a href="dashboard.html">My Account</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="wishlist.html">My Wishlist</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="login.html" class="login-link">Log In</a></li>
+                                    <li><a href="/profile">My Wishlist</a></li>
+                                    <li><a href="/shop/basket">Cart</a></li>
+                                    <li><a href="/login" class="login-link">Log In</a></li>
                                 </ul>
                             </div>
                             <!-- End .header-menu -->
@@ -159,6 +159,7 @@
 											<option value="33">- Parts &amp; Accessories</option>
 											<option value="34">- Boats</option>
 											<option value="57">- Auto Tools &amp; Supplies</option>
+
 										</select>
                                     </div>
                                     <!-- End .select-custom -->
@@ -174,9 +175,9 @@
                             <h6><span>Call us now</span><a href="tel:#" class="text-dark font1">+123 5678 890</a></h6>
                         </div>
 
-                        <a href="login.html" class="header-icon" title="login"><i class="icon-user-2"></i></a>
+                        <a href="/login" class="header-icon" title="login"><i class="icon-user-2"></i></a>
 
-                        <a href="wishlist.html" class="header-icon" title="wishlist"><i class="icon-wishlist-2"></i></a>
+                        <a href="/profile" class="header-icon" title="wishlist"><i class="icon-wishlist-2"></i></a>
 
 						@yield('aimeos_head_basket')
                     </div>
@@ -305,8 +306,8 @@
                             <li>
                                 <a href="#">Pages</a>
                                 <ul>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="cart.html">Shopping Cart</a></li>
+                                    <li><a href="/profile">Wishlist</a></li>
+                                    <li><a href="/shop/basket">Shopping Cart</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
                                     <li><a href="dashboard.html">Dashboard</a></li>
                                     <li><a href="about.html">About Us</a></li>
@@ -317,7 +318,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="/login">Login</a></li>
                                     <li><a href="forgot-password.html">Forgot Password</a></li>
                                 </ul>
                             </li>
@@ -533,10 +534,10 @@
                         <a href="#">Pages<span class="tip tip-hot">Hot!</span></a>
                         <ul>
                             <li>
-                                <a href="wishlist.html">Wishlist</a>
+                                <a href="/profile">Wishlist</a>
                             </li>
                             <li>
-                                <a href="cart.html">Shopping Cart</a>
+                                <a href="/shop/basket">Shopping Cart</a>
                             </li>
                             <li>
                                 <a href="checkout.html">Checkout</a>
@@ -545,7 +546,7 @@
                                 <a href="dashboard.html">Dashboard</a>
                             </li>
                             <li>
-                                <a href="login.html">Login</a>
+                                <a href="/login">Login</a>
                             </li>
                             <li>
                                 <a href="forgot-password.html">Forgot Password</a>
@@ -590,12 +591,12 @@
                 </ul>
 
                 <ul class="mobile-menu">
-                    <li><a href="login.html">My Account</a></li>
+                    <li><a href="/login">My Account</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="wishlist.html">My Wishlist</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="login.html" class="login-link">Log In</a></li>
+                    <li><a href="/profile">My Wishlist</a></li>
+                    <li><a href="/shop/basket">Cart</a></li>
+                    <li><a href="/login" class="login-link">Log In</a></li>
                 </ul>
             </nav>
             <!-- End .mobile-nav -->
@@ -630,17 +631,17 @@
             </a>
         </div>
         <div class="sticky-info">
-            <a href="wishlist.html" class="">
+            <a href="/profile" class="">
                 <i class="icon-wishlist-2"></i>Wishlist
             </a>
         </div>
         <div class="sticky-info">
-            <a href="login.html" class="">
+            <a href="/login" class="">
                 <i class="icon-user-2"></i>Account
             </a>
         </div>
         <div class="sticky-info">
-            <a href="cart.html" class="">
+            <a href="/shop/basket" class="">
                 <i class="icon-shopping-cart position-relative">
 					<span class="cart-count badge-circle">3</span>
 				</i>Cart

@@ -32,7 +32,8 @@
 @stop
 
 @section('aimeos_body')
-    <div class="container-fluid">
+<main class="main">
+	<div class="container">
         <?= $aibody['account/profile'] ?? '' ?>
         <?= $aibody['account/review'] ?? '' ?>
         <?= $aibody['account/subscription'] ?? '' ?>
@@ -40,6 +41,7 @@
         <?= $aibody['account/favorite'] ?? '' ?>
         <?= $aibody['account/watch'] ?? '' ?>
     </div>
+</main>
 @stop
 
 @section('aimeos_aside')
