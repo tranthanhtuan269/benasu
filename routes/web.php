@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\BlogController;
+
 $params = [];
 $conf = ['prefix' => '', 'where' => []];
 
@@ -43,3 +45,5 @@ if( $conf['prefix'] )
 Route::group($conf ?? [], function() {
     require __DIR__.'/auth.php';
 });
+
+Route::get('/blogs', [BlogController::class, 'index']);
