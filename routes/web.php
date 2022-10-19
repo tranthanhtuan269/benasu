@@ -46,4 +46,5 @@ Route::group($conf ?? [], function() {
     require __DIR__.'/auth.php';
 });
 
-Route::get('/blogs', [BlogController::class, 'index']);
+Route::resource('blogs', BlogController::class);
+Route::post('upload_image', [BlogController::class, 'uploadImage'])->name('upload');
