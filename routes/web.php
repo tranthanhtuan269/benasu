@@ -47,6 +47,7 @@ Route::group($conf ?? [], function() {
 });
 
 Route::post('upload_image', [BlogController::class, 'uploadImage'])->name('upload');
+Route::post('upload-crop-image', [BlogController::class, 'uploadCropImage'])->name('uploadCrop');
 Route::prefix('admin')->group(function () {
     Route::resource('blogs', BlogController::class);
 });

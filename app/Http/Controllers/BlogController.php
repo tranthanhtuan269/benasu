@@ -40,23 +40,14 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required',
         ]);
-
-        $input = $request->all();
-  
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
 
         $blog = new Blog;
         $blog->title = $request->title;
         $blog->slug = Str::of($request->title)->slug('-');
         $blog->description = $request->description;
-        $blog->image = $input['image'];
+        $blog->image = $request->image;
         $blog->created_by = \Auth::id();
         $blog->created_at  = date("Y-m-d H:i:s");
         $blog->updated_at  = date("Y-m-d H:i:s");
@@ -102,16 +93,6 @@ class BlogController extends Controller
         ]);
 
         $input = $request->all();
-  
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }else{
-            unset($input['image']);
-        }
-
         $blog->update($input);
 
         return redirect()->route('blogs.index')->with('success','Blog has been updated successfully');
@@ -146,5 +127,23 @@ class BlogController extends Controller
                   @header('Content-type: text/html; charset=utf-8'); 
                   echo $response;
         }
-     } 
+    }
+    
+    public function uploadCropImage(Request $request)
+    {
+        $folderPath = public_path('images/');
+ 
+        $image_parts = explode(";base64,", $request->image);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+ 
+        $imageName = uniqid() . '.png';
+ 
+        $imageFullPath = $folderPath.$imageName;
+ 
+        file_put_contents($imageFullPath, $image_base64);
+ 
+        return response()->json(['success'=>'Crop Image Uploaded Successfully', 'image' => $imageName]);
+    }
 }
