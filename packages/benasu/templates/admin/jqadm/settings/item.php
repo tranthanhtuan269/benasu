@@ -184,21 +184,6 @@ $params = $this->get( 'pageParams', [] );
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-6">
-							<div class="form-group row mandatory warning">
-								<label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Phone Number' ) ) ?></label>
-								<div class="col-sm-8">
-									<input class="form-control item-code" type="text" required="required" tabindex="1"
-										pattern="^[0-9\-]+(\.[0-9\-]+)*$"
-										name="<?= $enc->attr( $this->formparam( array( 'item', 'locale.site.phonenumber' ) ) ) ?>"
-										placeholder="<?= $enc->attr( $this->translate( 'admin', 'Shop Phone (required)' ) ) ?>"
-										value="<?= $enc->attr( $this->get( 'itemData/locale.site.phonenumber' ) ) ?>" />
-								</div>
-								<div class="col-sm-12 form-text text-muted help-text">
-									<?= $enc->html( $this->translate( 'admin', 'Phone number of your shop' ) ) ?>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 
