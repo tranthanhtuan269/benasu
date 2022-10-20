@@ -42,6 +42,9 @@
 </head>
 
 <body>
+    <?php
+    // var_dump($siteConfigs['phone_number']);die;
+    ?>
     <div class="page-wrapper">
         <div class="top-notice bg-primary text-white">
             <div class="container text-center">
@@ -110,9 +113,9 @@
                         <span class="separator"></span>
 
                         <div class="social-icons">
-                            <a href="#" class="social-icon social-facebook icon-facebook" target="_blank"></a>
-                            <a href="#" class="social-icon social-twitter icon-twitter" target="_blank"></a>
-                            <a href="#" class="social-icon social-instagram icon-instagram" target="_blank"></a>
+                            <a href="{{ isset($siteConfigs['facebook']) ? $siteConfigs['facebook'] : "https://facebook.com" }}" class="social-icon social-facebook icon-facebook" target="_blank"></a>
+                            <a href="{{ isset($siteConfigs['twitter']) ? $siteConfigs['twitter'] : "https://twitter.com" }}" class="social-icon social-twitter icon-twitter" target="_blank"></a>
+                            <a href="{{ isset($siteConfigs['instagram']) ? $siteConfigs['instagram'] : "https://instagram.com" }}" class="social-icon social-instagram icon-instagram" target="_blank"></a>
                         </div>
                         <!-- End .social-icons -->
                     </div>
@@ -140,28 +143,6 @@
                             <form action="#" method="get">
                                 <div class="header-search-wrapper">
                                     <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
-                                    <div class="select-custom">
-                                        <select id="cat" name="cat">
-											<option value="">All Categories</option>
-											<option value="4">Fashion</option>
-											<option value="12">- Women</option>
-											<option value="13">- Men</option>
-											<option value="66">- Jewellery</option>
-											<option value="67">- Kids Fashion</option>
-											<option value="5">Electronics</option>
-											<option value="21">- Smart TVs</option>
-											<option value="22">- Cameras</option>
-											<option value="63">- Games</option>
-											<option value="7">Home &amp; Garden</option>
-											<option value="11">Motors</option>
-											<option value="31">- Cars and Trucks</option>
-											<option value="32">- Motorcycles &amp; Powersports</option>
-											<option value="33">- Parts &amp; Accessories</option>
-											<option value="34">- Boats</option>
-											<option value="57">- Auto Tools &amp; Supplies</option>
-
-										</select>
-                                    </div>
                                     <!-- End .select-custom -->
                                     <button class="btn icon-magnifier p-0" title="search" type="submit"></button>
                                 </div>
@@ -172,7 +153,7 @@
 
                         <div class="header-contact d-none d-lg-flex pl-4 pr-4">
                             <img alt="phone" src="/assets/images/phone.png" width="30" height="30" class="pb-1">
-                            <h6><span>Call us now</span><a href="tel:#" class="text-dark font1">+123 5678 890</a></h6>
+                            <h6><span>Call us now</span><a href="tel:{{ isset($siteConfigs['phone_number']) ? $siteConfigs['phone_number'] : "0973619398" }}" class="text-dark font1">{{ isset($siteConfigs['phone_number']) ? $siteConfigs['phone_number'] : "0973.619.398" }} </a></h6>
                         </div>
 
                         <a href="/login" class="header-icon" title="login"><i class="icon-user-2"></i></a>
@@ -193,60 +174,6 @@
                         <ul class="menu">
                             <li class="active">
                                 <a href="/">Home</a>
-                            </li>
-                            <li>
-                                <a href="category.html">Categories</a>
-                                <div class="megamenu megamenu-fixed-width megamenu-3cols">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <a href="#" class="nolink">VARIATION 1</a>
-                                            <ul class="submenu">
-                                                <li><a href="category.html">Fullwidth Banner</a></li>
-                                                <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a>
-                                                </li>
-                                                <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a>
-                                                </li>
-                                                <li><a href="category.html">Left Sidebar</a></li>
-                                                <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                                <li><a href="category-off-canvas.html">Off Canvas Filter</a></li>
-                                                <li><a href="category-horizontal-filter1.html">Horizontal Filter1</a>
-                                                </li>
-                                                <li><a href="category-horizontal-filter2.html">Horizontal Filter2</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <a href="#" class="nolink">VARIATION 2</a>
-                                            <ul class="submenu">
-                                                <li><a href="category-list.html">List Types</a></li>
-                                                <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a>
-                                                </li>
-                                                <li><a href="category.html">3 Columns Products</a></li>
-                                                <li><a href="category-4col.html">4 Columns Products</a></li>
-                                                <li><a href="category-5col.html">5 Columns Products</a></li>
-                                                <li><a href="category-6col.html">6 Columns Products</a></li>
-                                                <li><a href="category-7col.html">7 Columns Products</a></li>
-                                                <li><a href="category-8col.html">8 Columns Products</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-4 p-0">
-                                            <div class="menu-banner">
-                                                <figure>
-                                                    <img src="/assets/images/menu-banner.jpg" width="192" height="313" alt="Menu banner">
-                                                </figure>
-                                                <div class="banner-content">
-                                                    <h4>
-                                                        <span class="">UP TO</span><br />
-                                                        <b class="">50%</b>
-                                                        <i>OFF</i>
-                                                    </h4>
-                                                    <a href="category.html" class="btn btn-sm btn-dark">SHOP NOW</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End .megamenu -->
                             </li>
                             <li>
                                 <a href="product.html">Products</a>
@@ -347,23 +274,22 @@
                                 <h4 class="widget-title">Contact Info</h4>
                                 <ul class="contact-info">
                                     <li>
-                                        <span class="contact-info-label">Address:</span>123 Street Name, City, England
+                                        <span class="contact-info-label">Address:</span>{{ isset($siteConfigs['address']) ? $siteConfigs['address'] : "123 Street Name, City, England" }}
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Phone:</span><a href="tel:">(123)
-											456-7890</a>
+                                        <span class="contact-info-label">Phone:</span><a href="tel:{{ isset($siteConfigs['phone_number']) ? $siteConfigs['phone_number'] : "0973619398" }}">{{ isset($siteConfigs['phone_number']) ? $siteConfigs['phone_number'] : "0973.619.398" }}</a>
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">mail@example.com</a>
+                                        <span class="contact-info-label">Email:</span> <a href="mailto:{{ isset($siteConfigs['mail']) ? $siteConfigs['mail'] : "tran.thanh.tuan269@gmail.com" }}">{{ isset($siteConfigs['mail']) ? $siteConfigs['mail'] : "tran.thanh.tuan269@gmail.com" }}</a>
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Working Days/Hours:</span> Mon - Sun / 9:00 AM - 8:00 PM
+                                        <span class="contact-info-label">Working Days/Hours:</span> {{ isset($siteConfigs['opentime']) ? $siteConfigs['opentime'] : "Mon - Sun / 9:00 AM - 8:00 PM" }}
                                     </li>
                                 </ul>
                                 <div class="social-icons">
-                                    <a href="#" class="social-icon social-facebook icon-facebook" target="_blank" title="Facebook"></a>
-                                    <a href="#" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
-                                    <a href="#" class="social-icon social-instagram icon-instagram" target="_blank" title="Instagram"></a>
+                                    <a href="{{ isset($siteConfigs['facebook']) ? $siteConfigs['facebook'] : "https://facebook.com" }}" class="social-icon social-facebook icon-facebook" target="_blank" title="Facebook"></a>
+                                    <a href="{{ isset($siteConfigs['tweeter']) ? $siteConfigs['tweeter'] : "https://tweeter.com" }}" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
+                                    <a href="{{ isset($siteConfigs['instagram']) ? $siteConfigs['instagram'] : "https://instagram.com" }}" class="social-icon social-instagram icon-instagram" target="_blank" title="Instagram"></a>
                                 </div>
                                 <!-- End .social-icons -->
                             </div>

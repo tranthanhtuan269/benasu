@@ -54,5 +54,13 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ( $view ) {
             $view->with( 'aimeossite', app( 'aimeos.context' )->get()->locale()->getSiteItem() );
         });
+
+
+        // \Cache::forget('SiteConfigs');
+        $siteConfigs = \Cache::rememberForever('SiteConfigs', function () {
+            return \DB::table('SiteConfigs')->pluck('value', 'key');
+        });
+
+        View::share('siteConfigs', $siteConfigs);
     }
 }

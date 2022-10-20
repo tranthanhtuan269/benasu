@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SiteConfigController;
 
 $params = [];
 $conf = ['prefix' => '', 'where' => []];
@@ -51,6 +52,7 @@ Route::post('upload_image', [BlogController::class, 'uploadImage'])->name('uploa
 Route::post('upload-crop-image', [BlogController::class, 'uploadCropImage'])->name('uploadCrop');
 Route::prefix('admin')->group(function () {
     Route::resource('blogs', BlogController::class);
+    Route::resource('configs', SiteConfigController::class);
 });
 
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
