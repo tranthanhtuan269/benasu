@@ -76,8 +76,7 @@ $enc = $this->encoder();
 							<input class="form-control coupon-code" type="text" maxlength="255"
 								placeholder="<?= $enc->attr( $this->translate( 'client', 'Coupon codes' ) ) ?>"
 								name="<?= $enc->attr( $this->formparam( 'b_coupon' ) ) ?>"
-							><!--
-							--><button class="btn btn-primary" type="submit"><?= $enc->html( $this->translate( 'client', 'Apply' ) ) ?></button>
+							><button class="btn" type="submit"><?= $enc->html( $this->translate( 'client', 'Apply' ) ) ?></button>
 						</div>
 
 						<?php if( !( $coupons = $this->standardBasket->getCoupons() )->isEmpty() ) : ?>
@@ -99,7 +98,7 @@ $enc = $this->encoder();
 				<div class="button-group">
 
 					<?php if( isset( $this->standardBackUrl ) ) : ?>
-						<a class="btn btn-default btn-lg btn-back" href="<?= $enc->attr( $this->standardBackUrl ) ?>">
+						<a class="btn btn-back" href="<?= $enc->attr( $this->standardBackUrl ) ?>">
 							<?= $enc->html( $this->translate( 'client', 'Back' ), $enc::TRUST ) ?>
 						</a>
 					<?php endif ?>
