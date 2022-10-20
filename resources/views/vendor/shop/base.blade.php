@@ -46,18 +46,6 @@
     // var_dump($siteConfigs['phone_number']);die;
     ?>
     <div class="page-wrapper">
-        <div class="top-notice bg-primary text-white">
-            <div class="container text-center">
-                <h5 class="d-inline-block">Get Up to <b>40% OFF</b> New-Season Styles</h5>
-                <a href="category.html" class="category">MEN</a>
-                <a href="category.html" class="category ml-2 mr-3">WOMEN</a>
-                <small>* Limited time only.</small>
-                <button title="Close (Esc)" type="button" class="mfp-close">×</button>
-            </div>
-            <!-- End .container -->
-        </div>
-        <!-- End .top-notice -->
-
         <header class="header">
             <div class="header-top">
                 <div class="container">
@@ -140,9 +128,9 @@
                     <div class="header-right w-lg-max">
                         <div class="header-icon header-search header-search-inline header-search-category w-lg-max text-right mt-0">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
-                            <form action="#" method="get">
+                            <form action="/shop" method="get">
                                 <div class="header-search-wrapper">
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
+                                    <input type="search" class="form-control" name="f_search" id="q" placeholder="Search..." required>
                                     <!-- End .select-custom -->
                                     <button class="btn icon-magnifier p-0" title="search" type="submit"></button>
                                 </div>
