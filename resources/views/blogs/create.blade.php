@@ -71,8 +71,17 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Description:</strong>
-                        <textarea class="form-control" id="summary-ckeditor" name="description"></textarea> 
+                        <textarea class="form-control" name="description"></textarea> 
                         @error('description')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Content:</strong>
+                        <textarea class="form-control" id="summary-ckeditor" name="content"></textarea> 
+                        @error('content')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>

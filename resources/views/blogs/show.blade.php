@@ -42,7 +42,7 @@
                         </div><!-- End .post-meta -->
 
                         <div class="post-content">
-                            {!! $blog->description !!}
+                            {!! $blog->content !!}
                         </div><!-- End .post-content -->
 
                         <div class="post-share">

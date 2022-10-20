@@ -40,6 +40,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'content' => 'required',
             'image' => 'required',
         ]);
 
@@ -47,6 +48,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->slug = Str::of($request->title)->slug('-');
         $blog->description = $request->description;
+        $blog->content = $request->content;
         $blog->image = $request->image;
         $blog->created_by = \Auth::id();
         $blog->created_at  = date("Y-m-d H:i:s");
@@ -96,6 +98,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'content' => 'required',
         ]);
 
         $input = $request->all();
