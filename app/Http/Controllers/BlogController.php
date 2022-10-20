@@ -62,9 +62,15 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Request $request, $slug)
     {
-        return view('blogs.show',compact('blog'));
+        $blog = Blog::where('slug', $slug)->first();
+        if($blog){
+            $relativeBlogs = Blog::where('id', '!=', $blog->id)->take(3)->get();
+            return view('blogs.show',compact('blog', 'relativeBlogs'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
