@@ -15,7 +15,7 @@ class SiteConfigController extends Controller
      */
     public function index(Request $request)
     {
-        $configs = SiteConfig::paginate(5);
+        $configs = SiteConfig::paginate(30);
         return view('configs.index', ['configs' => $configs]);
     }
 
