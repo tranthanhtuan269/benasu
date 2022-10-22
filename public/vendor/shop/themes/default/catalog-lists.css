@@ -367,3 +367,51 @@
 	border-color: var(--ai-warning);
 	color: var(--ai-bg) !important;
 }
+
+#search_page .price-input input{
+	padding: 5px;
+}
+
+#search_page .price-input input.price-low,
+#search_page .price-input input.price-high{
+	width: 50px;
+}
+
+#search_page .attr-list .attr-item .attr-name{
+	color: #000;
+}
+
+#search_page .attr-list .attr-item .attr-name:before{
+	width: 2rem;
+	height: 2rem;
+	margin-inline-end: 10px;
+	padding-left: 4px;
+	padding-top: 4px;
+}
+
+#search_page .catalog-session-pinned,
+#search_page .catalog-session-seen{
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin-bottom: 20px;
+}
+
+#search_page .catalog-session-pinned .seen-item,
+#search_page .catalog-session-seen .seen-item{
+	border-bottom: 1px solid #b3afaf;
+}
+
+#search_page .catalog-session-seen .seen-item h2{
+ 	font-size: 16px;
+}
+#search_page .product .price-item.default .value{
+	font-size: 14px;
+}
+
+#search_page .product-list .product{
+	width: 33%;
+}
+
+#search_page .product-list .product-details{
+	max-width: none;
+}

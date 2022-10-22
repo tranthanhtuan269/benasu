@@ -17,5 +17,5 @@
 	<div class="container">
         <?= $aibody['checkout/standard'] ?>
     </div>
-</div>
+</main>
 @stop

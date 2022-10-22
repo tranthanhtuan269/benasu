@@ -12,8 +12,10 @@
     <?= $aibody['catalog/search'] ?? '' ?>
 @stop
 
-@section('aimeos_body')
-    <div class="container-fluid">
+@section('aimeos_body')+
+<main class="main" id="basket-page">
+	<div class="container">
         <?= $aibody['checkout/confirm'] ?>
     </div>
+</main>
 @stop
