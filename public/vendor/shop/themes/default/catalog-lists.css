@@ -409,8 +409,14 @@
 }
 
 #search_page .product-list .product{
-	width: 33%;
+	width: 31%;
+	margin-left: 1%;
 }
+
+#search_page .product-list .product:nth-child(3n+0){
+	margin-left: 2%;
+}
+
 
 #search_page .product-list .product-details{
 	max-width: none;
