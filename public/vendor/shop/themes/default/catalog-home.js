@@ -60,7 +60,7 @@ $(document).ready(function(){
                 html +=                 '</a>\
                             </figure>\
                             <div class="product-details">\
-                                <h3 class="product-title"> <a href="'+products[i]['product.url']+'">'+products[i]['product.label']+'</a>\
+                                <h3 class="product-title"> <a href="/shop/'+products[i]['product.url']+'">'+products[i]['product.label']+'</a>\
                                 </h3>\
                                 <div class="ratings-container">\
                                     <div class="product-ratings">\

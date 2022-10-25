@@ -1,6 +1,7 @@
 @extends('shop::base')
 
 @section('aimeos_header')
+    <link type="text/css" rel="stylesheet" href="{{ asset('vendor/shop/themes/default/aimeos.css?v=' . config( 'shop.version', 1 ) ) }}" />
     <?= $aiheader['locale/select'] ?? '' ?>
     <?= $aiheader['basket/mini'] ?? '' ?>
     <?= $aiheader['catalog/tree'] ?? '' ?>
@@ -26,8 +27,10 @@
 @stop
 
 @section('aimeos_body')
-    <div class="container-fluid">
+<main class="main" id="supplier-page">
+    <div class="container">
         <?= $aibody['supplier/detail'] ?? '' ?>
         <?= $aibody['catalog/lists'] ?? '' ?>
     </div>
+</main>
 @stop
