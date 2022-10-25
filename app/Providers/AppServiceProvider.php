@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-        // \Cache::forget('SiteConfigs');
+        \Cache::forget('SiteConfigs');
         $siteConfigs = \Cache::rememberForever('SiteConfigs', function () {
             return \DB::table('siteconfigs')->pluck('value', 'key');
         });
