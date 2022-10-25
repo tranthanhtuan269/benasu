@@ -117,7 +117,7 @@
 							<i class="fas fa-bars"></i>
 						</button>
                         <a href="/" class="logo">
-                            <img src="/assets/images/logo.png" width="111" height="44" alt="Porto Logo">
+                            <img src="/assets/images/6dabeeda1f69d8378178.jpg" width="111" height="44" alt="Porto Logo">
                         </a>
                     </div>
                     <!-- End .header-left -->
