@@ -9,7 +9,7 @@
 			<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; {{ config( 'shop.csp.backend', 'style-src \'unsafe-inline\' \'self\' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; script-src \'unsafe-eval\' \'self\' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src \'self\' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://*.tile.openstreetmap.org https://aimeos.org; frame-src https://www.youtube.com https://player.vimeo.com' ) }}">
 		@endif
 
-		<title>Aimeos administration interface</title>
+		<title>Benasu administration interface</title>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 		@if( $localeDir == 'rtl' )
