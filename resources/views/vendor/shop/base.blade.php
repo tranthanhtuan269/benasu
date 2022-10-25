@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Porto - Bootstrap eCommerce Template</title>
+    <title>benasu.com</title>
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Bootstrap eCommerce Template">
+    <meta name="keywords" content="benasu.com" />
+    <meta name="description" content="benasu.com">
     <meta name="author" content="SW-THEMES">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/images/icons/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/images/6dabeeda1f69d8378178.jpg">
 
 	@yield('aimeos_header')
 
