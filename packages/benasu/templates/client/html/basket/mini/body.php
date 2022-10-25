@@ -206,7 +206,7 @@ $priceFormat = $pricefmt !== 'price:default' ? $pricefmt : $this->translate( 'cl
 				<div class="product">
 					<div class="product-details">
 						<h4 class="product-title">
-							<a href="product.html"><div><?= $enc->html( $product->getName() ) ?></div></a>
+							<div><?= $enc->html( $product->getName() ) ?></div>
 						</h4>
 
 						<span class="cart-product-info">
@@ -216,11 +216,9 @@ $priceFormat = $pricefmt !== 'price:default' ? $pricefmt : $this->translate( 'cl
 					<!-- End .product-details -->
 
 					<figure class="product-image-container">
-						<a href="product.html" class="product-image">
-							<?php if( ( $url = $product->getMediaUrl() ) != '' ) : ?>
-								<img src="<?= $enc->attr( $this->content( $url ) ) ?>" alt="product" width="80" height="80">
-							<?php endif ?>
-						</a>
+						<?php if( ( $url = $product->getMediaUrl() ) != '' ) : ?>
+							<img src="<?= $enc->attr( $this->content( $url ) ) ?>" alt="product" width="80" height="80">
+						<?php endif ?>
 
 						<a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
 					</figure>

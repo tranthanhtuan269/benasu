@@ -56,9 +56,9 @@
                             <a href="#">Links</a>
                             <div class="header-menu">
                                 <ul>
-                                    <li><a href="dashboard.html">My Account</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="/profile">My Account</a></li>
+                                    <li><a href="/aboutus">About Us</a></li>
+                                    <li><a href="/blogs">Blog</a></li>
                                     <li><a href="/profile">My Wishlist</a></li>
                                     <li><a href="/shop/basket">Cart</a></li>
                                     <li><a href="/login" class="login-link">Log In</a></li>
@@ -76,7 +76,6 @@
                                 <ul>
                                     <li><a href="#"><i class="flag-us flag mr-2"></i>ENG</a>
                                     </li>
-                                    <li><a href="#"><i class="flag-fr flag mr-2"></i>FRA</a></li>
                                 </ul>
                             </div>
                             <!-- End .header-menu -->
@@ -87,7 +86,6 @@
                             <a href="#">USD</a>
                             <div class="header-menu">
                                 <ul>
-                                    <li><a href="#">EUR</a></li>
                                     <li><a href="#">USD</a></li>
                                 </ul>
                             </div>
@@ -217,11 +215,8 @@
                                     <li><a href="#">Order Tracking</a></li>
                                     <li><a href="#">Shipping & Delivery</a></li>
                                     <li><a href="#">Orders History</a></li>
-                                    <li><a href="#">Advanced Search</a></li>
                                     <li><a href="dashboard.html">My Account</a></li>
-                                    <li><a href="#">Careers</a></li>
                                     <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Corporate Sales</a></li>
                                     <li><a href="#">Privacy</a></li>
                                 </ul>
                             </div>
@@ -234,17 +229,9 @@
                                 <h4 class="widget-title">Popular Tags</h4>
 
                                 <div class="tagcloud">
-                                    <a href="#">Bag</a>
-                                    <a href="#">Black</a>
-                                    <a href="#">Blue</a>
-                                    <a href="#">Clothes</a>
-                                    <a href="#">Fashion</a>
-                                    <a href="#">Hub</a>
-                                    <a href="#">Shirt</a>
-                                    <a href="#">Shoes</a>
-                                    <a href="#">Skirt</a>
-                                    <a href="#">Sports</a>
-                                    <a href="#">Sweater</a>
+                                    <a href="#">Spa</a>
+                                    <a href="#">Was</a>
+                                    <a href="#">Supplies</a>
                                 </div>
                             </div>
                             <!-- End .widget -->
@@ -276,7 +263,7 @@
                 <div class="footer-bottom">
                     <div class="container d-sm-flex align-items-center">
                         <div class="footer-left">
-                            <span class="footer-copyright">© Porto eCommerce. 2021. All Rights Reserved</span>
+                            <span class="footer-copyright">© Benasu eCommerce. 2022. All Rights Reserved</span>
                         </div>
 
                         <div class="footer-right ml-auto mt-1 mt-sm-0">
