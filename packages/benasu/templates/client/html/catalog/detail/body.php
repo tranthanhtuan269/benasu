@@ -706,7 +706,7 @@ $currency = substr($this->translate('currency', $prices->getCurrencyId()->first(
 
 							<?php if($rebate > 0): ?>
 							<div class="product-label label-sale">
-								<?php echo $this->number((- $rebate)  * 100 / $price, 0) . '%'; ?>
+								<?php echo $this->number((- $rebate)  * 100 / ($price + $rebate), 0) . '%'; ?>
 							</div>
 							<?php endif ?>
 						</div>
@@ -759,8 +759,8 @@ $currency = substr($this->translate('currency', $prices->getCurrencyId()->first(
 
 					<div class="price-box">
 						<?php if($rebate > 0): ?>
-							<span class="old-price"><?php echo $currency . $this->number($price, 2); ?></span>
-							<span class="new-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
+							<span class="old-price"><?php echo $currency . $this->number($price + $rebate, 2); ?></span>
+							<span class="new-price"><?php echo $currency . $this->number(($price), 2); ?></span>
 						<?php else : ?>
 							<span class="new-price"><?php echo $currency . $this->number(($price), 2); ?></span>
 						<?php endif ?>
