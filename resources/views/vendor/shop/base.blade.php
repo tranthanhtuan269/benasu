@@ -42,6 +42,9 @@
 </head>
 
 <body>
+    <?php
+    var_dump($siteConfigs['phone_number']);die;
+    ?>
     <div class="page-wrapper">
         <header class="header">
             <div class="header-top">
