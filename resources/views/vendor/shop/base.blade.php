@@ -160,25 +160,6 @@
                             <li class="active">
                                 <a href="/">Home</a>
                             </li>
-                            <li>
-                                <a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="/profile">Wishlist</a></li>
-                                    <li><a href="/shop/basket">Shopping Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="single.html">Blog Post</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="/login">Login</a></li>
-                                    <li><a href="forgot-password.html">Forgot Password</a></li>
-                                </ul>
-                            </li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
                             <li class="float-right"><a href="#" class="pl-5">Special Offer!</a></li>
