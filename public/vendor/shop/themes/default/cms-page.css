@@ -127,7 +127,7 @@
 	.aimeos.cms-page h2:not([itemprop]):before {
 		border-bottom: #CCCCCC;
 		border-bottom: 1px solid var(--ai-primary-light, #CCCCCC);
-		width: 28%;
+		width: 23%;
 	    top: 13px;
 	    left: 0;
 	}
@@ -136,7 +136,7 @@
 	.aimeos.cms-page h2:not([itemprop]):after {
 		border-bottom: #CCCCCC;
 		border-bottom: 1px solid var(--ai-primary, #CCCCCC);
-		width: 28%;
+		width: 23%;
 	    top: 13px;
 	    right: 0;
 	}
