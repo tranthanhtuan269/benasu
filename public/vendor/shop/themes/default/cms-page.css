@@ -39,9 +39,6 @@
 	content: "";
 	margin: 0 auto;
 	position: absolute;
-	bottom: 0;
-	right: 0;
-	left: 0;
 }
 
 .aimeos.cms-page h1:before,
@@ -55,8 +52,8 @@
 
 .aimeos.cms-page h1:after,
 .aimeos.cms-page h2:not([itemprop]):after {
-	border-bottom: #282828;
-	border-bottom: 1px solid var(--ai-primary, #282828);
+	border-bottom: #CCCCCC;
+	border-bottom: 1px solid var(--ai-primary, #CCCCCC);
 	width: 40%;
     top: 16px;
     right: 0;
