@@ -1,13 +1,14 @@
 @extends('shop::base')
 
 @section('aimeos_header')
+    <link type="text/css" rel="stylesheet" href="{{ asset('vendor/shop/themes/default/aimeos.css?v=' . config( 'shop.version', 1 ) ) }}" />
     <?= $aiheader['locale/select'] ?? '' ?>
     <?= $aiheader['basket/mini'] ?? '' ?>
     <?= $aiheader['catalog/search'] ?? '' ?>
     <?= $aiheader['catalog/filter'] ?? '' ?>
     <?= $aiheader['catalog/tree'] ?? '' ?>
-    <?= $aiheader['catalog/session'] ?? '' ?>
     <?= $aiheader['catalog/stage'] ?? '' ?>
+    <?= $aiheader['catalog/session'] ?? '' ?>
     <?= $aiheader['catalog/lists'] ?? '' ?>
 @stop
 
@@ -32,7 +33,8 @@
 @stop
 
 @section('aimeos_body')
-    <div class="container-fluid">
+<main>
+    <div class="container" id="search_page">
         <div class="row">
             <aside class="col-lg-3">
                 <?= $aibody['catalog/filter'] ?? '' ?>
@@ -43,4 +45,5 @@
             </div>
         </div>
     </div>
+</main> 
 @stop
