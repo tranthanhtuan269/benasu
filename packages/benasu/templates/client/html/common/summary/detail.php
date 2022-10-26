@@ -180,7 +180,7 @@ $errors = $this->get( 'summaryErrorCodes', [] );
 							</figure>
 						</div>
 						<div class="details col-12 col-lg-8">
-							<a class="product-name" href="<?= $enc->attr( $url ) ?>"><?= $enc->html( $product->getName(), $enc::TRUST ) ?></a>
+							<a class="product-name" href="<?= $enc->attr( $url2 ) ?>"><?= $enc->html( $product->getName(), $enc::TRUST ) ?></a>
 							<p class="code">
 								<span class="name"><?= $enc->html( $this->translate( 'client', 'Article no.' ), $enc::TRUST ) ?></span>
 								<span class="value"><?= $product->getProductCode() ?></span>

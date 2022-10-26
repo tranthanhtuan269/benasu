@@ -76,7 +76,6 @@ $pricefmt = $this->translate( 'client/code', 'price:default' );
 /// Price format with price value (%1$s) and currency (%2$s)
 $priceFormat = $pricefmt !== 'price:default' ? $pricefmt : $this->translate( 'client', '%1$s %2$s' );
 
-
 ?>
 <?php if(false) : ?>
 <section class="aimeos basket-mini" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
@@ -181,32 +180,32 @@ $priceFormat = $pricefmt !== 'price:default' ? $pricefmt : $this->translate( 'cl
 		<i class="minicart-icon"></i>
 		<span class="cart-count badge-circle"><?= $enc->html( $quantity ) ?></span>
 	</a>
-
+	
 	<div class="cart-overlay"></div>
 	<div class="dropdown-menu mobile-cart">
 		<a href="#" title="Close (Esc)" class="btn-close">×</a>
-
+		
 		<div class="dropdownmenu-wrapper custom-scrollbar">
 			<div class="dropdown-cart-header">Shopping Cart</div>
 			<!-- End .dropdown-cart-header -->
-
+			
 			<?php if( ( $errors = $this->get( 'miniErrorList', [] ) ) !== [] ) : ?>
 				<ul class="error-list">
 					<?php foreach( $errors as $error ) : ?>
 						<li class="error-item"><?= $enc->html( $error ) ?></li>
 					<?php endforeach ?>
 				</ul>
-			<?php endif ?>
-			<div class="dropdown-cart-products">
-				<?php foreach( $this->miniBasket->getProducts() as $pos => $product ) : ?>
-				<?php
+				<?php endif ?>
+				<div class="dropdown-cart-products">
+					<?php foreach( $this->miniBasket->getProducts() as $pos => $product ) : ?>
+						<?php
 					$param = ['resource' => 'basket', 'id' => 'default', 'related' => 'product', 'relatedid' => $pos];
 					$param[$this->csrf()->name()] = $this->csrf()->value();
-				?>
+					?>
 				<div class="product">
 					<div class="product-details">
 						<h4 class="product-title">
-							<div><?= $enc->html( $product->getName() ) ?></div>
+							<div><a href="<?= $enc->attr( $product->getTarget() ) ?>"><?= $enc->html( $product->getName() ) ?></a></div>
 						</h4>
 
 						<span class="cart-product-info">
