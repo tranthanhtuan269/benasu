@@ -48,14 +48,18 @@
 .aimeos.cms-page h2:not([itemprop]):before {
 	border-bottom: #CCCCCC;
 	border-bottom: 1px solid var(--ai-primary-light, #CCCCCC);
-	width: 12rem;
+	width: 40%;
+    top: 16px;
+    left: 0;
 }
 
 .aimeos.cms-page h1:after,
 .aimeos.cms-page h2:not([itemprop]):after {
 	border-bottom: #282828;
 	border-bottom: 1px solid var(--ai-primary, #282828);
-	width: 6rem;
+	width: 40%;
+    top: 16px;
+    right: 0;
 }
 
 .aimeos.cms-page .background {
