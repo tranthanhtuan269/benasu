@@ -13,6 +13,16 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexf(Request $request)
+    {
+        $blogs = Blog::paginate(6);
+        return view('blogs.indexf', ['blogs' => $blogs]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         $blogs = Blog::paginate(5);

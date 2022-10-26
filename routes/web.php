@@ -56,6 +56,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('configs', SiteConfigController::class);
 });
 
+Route::get('/blog', [BlogController::class, 'indexf'])->name('blogs.indexf');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
 Route::resource('comments', CommentController::class);
