@@ -158,9 +158,32 @@
                             <li class="active">
                                 <a href="/">Home</a>
                             </li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li class="float-right"><a href="#" class="pl-5">Special Offer!</a></li>
+                            <li>
+                                <a href="#">Categories</a>
+                                <ul>
+                                    <li><a href="/shop/skincare~32">Skincare</a></li>
+                                    <li><a href="/shop/lashes~33">Lashes</a></li>
+                                    <li><a href="/shop/pmu~34">PMU</a></li>
+                                    <li><a href="/shop/nails~35">Nails</a></li>
+                                    <li><a href="/shop/waxing~36">Waxing</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Products</a>
+                                <ul>
+                                    <li><a href="/shop/spa-liner">Spa Liner</a></li>
+                                    <li><a href="/shop/wax-clothes2">Wax Clothes 2</a></li>
+                                    <li><a href="/shop/ring-cup-pigment-lash-glue-Blue">Ring Cup - Pigment - Lash Glue (Blue)</a></li>
+                                    <li><a href="/shop/skin-care-group">Skin Care Group</a></li>
+                                    <li><a href="/shop/LA-123">Lash Artist Starter Kit</a></li>
+                                    <li><a href="/shop/24Goldserum">24 K Gold serum (30ml)</a></li>
+                                    <li><a href="/shop/hena-brown">HENNA BROWN (10ml)</a></li>
+                                    <li><a href="/shop/MEGA-HR-1-1">Face Cleansing Brush</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/pages/contact-us">Contact Us</a></li>
+                            <li class="float-right"><a href="/pages/special-offer" class="pl-5">Special Offer!</a></li>
                         </ul>
                     </nav>
                 </div>
