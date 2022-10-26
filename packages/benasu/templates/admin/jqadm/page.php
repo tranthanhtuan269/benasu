@@ -133,13 +133,7 @@ $after = is_array( $after ) ? $after['_'] ?? reset( $after ) : $after;
 
 	<nav class="main-sidebar">
 		<div class="sidebar-wrapper">
-
-			<a class="logo" target="_blank" href="https://aimeos.org/update/?type=<?= $this->get( 'aimeosType' ) ?>&version=<?= $this->get( 'aimeosVersion' ) ?>">
-				<img src="https://aimeos.org/check/?type=<?= $this->get( 'aimeosType' ) ?>&version=<?= $this->get( 'aimeosVersion' ) ?>&extensions=<?= $this->get( 'aimeosExtensions' ) ?>" alt="Aimeos update" title="Aimeos update">
-			</a>
-
 			<ul class="sidebar-menu">
-
 				<?php if( $this->access( $this->config( 'admin/jqadm/resource/site/groups', [] ) ) ) : ?>
 
 					<li class="none"></li>
