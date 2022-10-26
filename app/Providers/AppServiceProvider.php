@@ -62,5 +62,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::share('siteConfigs', $siteConfigs);
+
+        Paginator::useBootstrap();
     }
 }

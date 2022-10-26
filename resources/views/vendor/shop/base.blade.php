@@ -211,13 +211,13 @@
                                 <h4 class="widget-title">Customer Service</h4>
 
                                 <ul class="links">
-                                    <li><a href="#">Help & FAQs</a></li>
-                                    <li><a href="#">Order Tracking</a></li>
-                                    <li><a href="#">Shipping & Delivery</a></li>
-                                    <li><a href="#">Orders History</a></li>
-                                    <li><a href="dashboard.html">My Account</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="/pages/help-faqs">Help & FAQs</a></li>
+                                    <li><a href="/pages/order-tracking">Order Tracking</a></li>
+                                    <li><a href="/pages/shipping-delivery">Shipping & Delivery</a></li>
+                                    <li><a href="/pages/orders-history">Orders History</a></li>
+                                    <li><a href="/profile">My Account</a></li>
+                                    <li><a href="/pages/about-us">About Us</a></li>
+                                    <li><a href="/pages/privacy">Privacy</a></li>
                                 </ul>
                             </div>
                             <!-- End .widget -->
@@ -321,7 +321,7 @@
                 <ul class="mobile-menu">
                     <li><a href="/login">My Account</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="/bloglist">Blog</a></li>
                     <li><a href="/profile">My Wishlist</a></li>
                     <li><a href="/shop/basket">Cart</a></li>
                     <li><a href="/login" class="login-link">Log In</a></li>
@@ -335,11 +335,11 @@
             </form>
 
             <div class="social-icons">
-                <a href="#" class="social-icon social-facebook icon-facebook" target="_blank">
+                <a href="{{ isset($siteConfigs['facebook']) ? $siteConfigs['facebook'] : "https://facebook.com" }}" class="social-icon social-facebook icon-facebook" target="_blank">
                 </a>
-                <a href="#" class="social-icon social-twitter icon-twitter" target="_blank">
+                <a href="{{ isset($siteConfigs['twitter']) ? $siteConfigs['twitter'] : "https://twitter.com" }}" class="social-icon social-twitter icon-twitter" target="_blank">
                 </a>
-                <a href="#" class="social-icon social-instagram icon-instagram" target="_blank">
+                <a href="{{ isset($siteConfigs['instagram']) ? $siteConfigs['instagram'] : "https://instagram.com" }}" class="social-icon social-instagram icon-instagram" target="_blank">
                 </a>
             </div>
         </div>
