@@ -5180,7 +5180,7 @@ figure .porto-loading-icon {
   height: auto;
   width: 100%;
 }
-.product-default figure img:last-child {
+.product-default figure img {
   opacity: 0;
   position: absolute;
   left: 0;
