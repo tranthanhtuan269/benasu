@@ -20,7 +20,7 @@
 
     <div class="container mt-4 mb-2">
         <div class="row">
-            <div class="col-4" style="width: 393.333px; border-right: 1px solid #999;">
+            <div class="col-sm-12 col-md-4 feature-ads">
                 <div class="info-box info-box-icon-left">
                     <i class="icon-shipping"></i>
 
@@ -31,7 +31,7 @@
                     <!-- End .info-box-content -->
                 </div>
             </div>
-            <div class="col-4" style="width: 393.333px; border-right: 1px solid #999;">
+            <div class="col-sm-12 col-md-4 feature-ads">
                 <div class="info-box info-box-icon-left">
                     <i class="icon-money"></i>
 
@@ -42,7 +42,7 @@
                     <!-- End .info-box-content -->
                 </div>
             </div>
-            <div class="col-4" style="width: 393.333px;">
+            <div class="col-sm-12 col-md-4">
                 <div class="info-box info-box-icon-left">
                     <i class="icon-support"></i>
 

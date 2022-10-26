@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SiteConfigController;
+use App\Http\Controllers\PageController;
 
 $params = [];
 $conf = ['prefix' => '', 'where' => []];
@@ -58,3 +59,5 @@ Route::prefix('admin')->group(function () {
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
 Route::resource('comments', CommentController::class);
+Route::resource('pages', PageController::class);
+Route::get('pages/{slug}', [PageController::class, 'slug'])->name('pages.show');

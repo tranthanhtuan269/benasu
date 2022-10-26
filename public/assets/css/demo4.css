@@ -13777,6 +13777,10 @@ section {
   .banners-slider .banner2 .row {
     margin: 0 32px 0 28px;
   }
+
+  .feature-ads{
+    border-right: 1px solid #999;
+  }
 }
 @media (max-width: 767px) {
   .home-slider .banner-md-vw {
