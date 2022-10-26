@@ -8513,8 +8513,8 @@ img.slide-bg {
   transition: all 0.25s;
 }
 .sticky-navbar .sticky-info {
-  flex: 0 0 20%;
-  max-width: 20%;
+  flex: 0 0 25%;
+  max-width: 25%;
   padding: 1rem 0;
 }
 .sticky-navbar .sticky-info:not(:last-child) {
