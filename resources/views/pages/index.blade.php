@@ -35,7 +35,7 @@
                 @foreach ($pages as $page)
                     <tr>
                         <td>{{ $page->id }}</td>
-                        <td>{{ $page->name }}</td>
+                        <td><a href="/pages/{{ $page->slug }}">{{ $page->name }}</a></td>
                         <td>{!! $page->content !!}</td>
                         <td>
                             <form action="{{ route('pages.destroy',$page->id) }}" method="post">
