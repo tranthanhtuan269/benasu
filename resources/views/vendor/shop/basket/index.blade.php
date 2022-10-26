@@ -1,4 +1,4 @@
-@extends('shop::base_cart')
+@extends('shop::base')
 
 @section('aimeos_header')
     <title>{{ __( 'Basket') }}</title>
