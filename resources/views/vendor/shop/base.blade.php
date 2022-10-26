@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/demo4.min.css">
+    <link rel="stylesheet" href="/assets/css/demo4.css">
     <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome-free/css/all.min.css">
 </head>
 

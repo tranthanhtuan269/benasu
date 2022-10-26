@@ -5179,8 +5179,6 @@ figure .porto-loading-icon {
   transition: opacity 0.3s ease-in-out;
   height: auto;
   width: 100%;
-}
-.product-default figure img:last-child {
   opacity: 0;
   position: absolute;
   left: 0;
