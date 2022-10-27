@@ -486,7 +486,7 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 			</div>
 			<!-- End .price-box -->
 			<div class="product-action">
-				<a href="<?= $enc->attr( $url ) ?>" class="btn-icon btn-add-cart product-type-simple"><i class="fas fa-external-link-alt"></i><span>View detail</span></a>
+				<a href="<?= $enc->attr( $url ) ?>" class="btn-icon product-type-simple"><i class="fas fa-external-link-alt"></i><span>View detail</span></a>
 			</div>
 		</div>
 		<!-- End .product-details -->
