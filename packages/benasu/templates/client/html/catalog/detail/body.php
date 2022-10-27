@@ -87,14 +87,15 @@ $currency = substr($this->translate('currency', $prices->getCurrencyId()->first(
 					data-id="<?= $this->detailProductItem->getId() ?>" data-reqstock="<?= $reqstock ?>">
 
 					<div class="col-sm-6">
-						
-						<div class="label-group">
-							<span class="product-label label-hot"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
-							<?php if($rebate > 0): ?>
-							<div class="product-label label-sale">
-								<?php echo $this->number((- $rebate)  * 100 / ($price + $rebate), 0) . '%'; ?>
+						<div class="product-slider-container">
+							<div class="label-group">
+								<span class="product-label label-hot"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
+								<?php if($rebate > 0): ?>
+								<div class="product-label label-sale">
+									<?php echo $this->number((- $rebate)  * 100 / ($price + $rebate), 0) . '%'; ?>
+								</div>
+								<?php endif ?>
 							</div>
-							<?php endif ?>
 						</div>
 
 						<?= $this->partial(
