@@ -447,7 +447,7 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 		<!-- End .product-details -->
 	</div>
 	<?php else : ?>
-	<div class="product-default appear-animate" data-animation-name="fadeInRightShorter">
+	<div class="product-default">
 		<figure>
 			<a href="<?= $enc->attr( $url ) ?>" title="<?= $enc->attr( $productItem->getName(), $enc::TRUST ) ?>">
 				<?php if( $mediaItem = $mediaItems->first() ) : ?>
