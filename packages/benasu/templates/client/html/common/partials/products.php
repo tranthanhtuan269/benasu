@@ -429,10 +429,10 @@ $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filte
 				<!-- End .product-container -->
 				<div class="price-box">
 					<?php if($rebate > 0): ?>
-					<del class="old-price"><?php echo $currency . $this->number($price, 2); ?></del>
-					<span class="product-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
+					<del class="old-price"><?php echo $currency . $this->number($price + $rebate, 2); ?></del>
+					<span class="product-price"><?php echo $currency . $this->number(($price), 2); ?></span>
 					<?php else : ?>
-					<span class="product-price"><?php echo $currency . $this->number(($price - $rebate), 2); ?></span>
+					<span class="product-price"><?php echo $currency . $this->number(($price), 2); ?></span>
 					<?php endif ?>
 				</div>
 				<!-- End .price-box -->
