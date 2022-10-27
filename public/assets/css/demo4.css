@@ -5285,6 +5285,7 @@ figure .porto-loading-icon {
   text-align: center;
 }
 .product-default .btn-add-cart,
+.product-default .btn-add-cart2,
 .product-default .btn-icon-wish,
 .product-default .btn-quickview {
   border: 1px solid #f4f4f4;
@@ -5331,7 +5332,8 @@ figure .porto-loading-icon {
 .product-default:not(.inner-icon) .btn-add-cart:not(.product-type-simple) i {
   display: none;
 }
-.product-default .btn-add-cart {
+.product-default .btn-add-cart,
+.product-default .btn-add-cart2 {
   display: inline-block;
   padding: 0 1.4rem;
   font-size: 1.2rem;
@@ -5342,12 +5344,14 @@ figure .porto-loading-icon {
   cursor: pointer;
   transition: all 0.25s ease;
 }
-.product-default .btn-add-cart i {
+.product-default .btn-add-cart i,
+.product-default .btn-add-cart2 i {
   font-size: 1.5rem;
   margin-bottom: 2px;
   line-height: 0;
 }
-.product-default .btn-add-cart i:before {
+.product-default .btn-add-cart i:before,
+.product-default .btn-add-cart2 i:before  {
   margin: 0 4px 0 0;
   font-weight: 800;
 }
