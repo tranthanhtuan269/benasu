@@ -18,42 +18,52 @@
     <?= $aibody['catalog/home'] ?? '' ?>
     <!-- End .home-slider -->
 
-    <div class="container mt-4 mb-2">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 feature-ads">
-                <div class="info-box info-box-icon-left">
-                    <i class="icon-shipping"></i>
+    <div class="container">
+        <div class="info-boxes-slider owl-carousel owl-theme mb-2 owl-loaded owl-drag" data-owl-options="{
+					'dots': false,
+					'loop': false,
+					'responsive': {
+						'576': {
+							'items': 2
+						},
+						'992': {
+							'items': 3
+						}
+					}
+				}">
+                    
+                    <!-- End .info-box -->
 
-                    <div class="info-box-content">
-                        <h4>FREE SHIPPING &amp; RETURN</h4>
-                        <p class="text-body">Free shipping on all orders over $99.</p>
-                    </div>
-                    <!-- End .info-box-content -->
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4 feature-ads">
-                <div class="info-box info-box-icon-left">
-                    <i class="icon-money"></i>
+                    
+                    <!-- End .info-box -->
 
-                    <div class="info-box-content">
-                        <h4>MONEY BACK GUARANTEE</h4>
-                        <p class="text-body">100% money back guarantee</p>
-                    </div>
-                    <!-- End .info-box-content -->
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="info-box info-box-icon-left">
-                    <i class="icon-support"></i>
+                    
+                    <!-- End .info-box -->
+                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0.25s ease 0s; width: 1110px;"><div class="owl-item active" style="width: 370px;"><div class="info-box info-box-icon-left">
+                        <i class="icon-shipping"></i>
 
-                    <div class="info-box-content">
-                        <h4>ONLINE SUPPORT 24/7</h4>
-                        <p class="text-body">Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <!-- End .info-box-content -->
-                </div>
-            </div>
-        </div>
+                        <div class="info-box-content">
+                            <h4>FREE SHIPPING &amp; RETURN</h4>
+                            <p class="text-body">Free shipping on all orders over $99.</p>
+                        </div>
+                        <!-- End .info-box-content -->
+                    </div></div><div class="owl-item" style="width: 370px;"><div class="info-box info-box-icon-left">
+                        <i class="icon-money"></i>
+
+                        <div class="info-box-content">
+                            <h4>MONEY BACK GUARANTEE</h4>
+                            <p class="text-body">100% money back guarantee</p>
+                        </div>
+                        <!-- End .info-box-content -->
+                    </div></div><div class="owl-item" style="width: 370px;"><div class="info-box info-box-icon-left">
+                        <i class="icon-support"></i>
+
+                        <div class="info-box-content">
+                            <h4>ONLINE SUPPORT 24/7</h4>
+                            <p class="text-body">Lorem ipsum dolor sit amet.</p>
+                        </div>
+                        <!-- End .info-box-content -->
+                    </div></div></div></div><div class="owl-nav disabled"><button type="button" title="nav" role="presentation" class="owl-prev"><i class="icon-angle-left"></i></button><button type="button" title="nav" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
     </div>
 
     <div class="container">
