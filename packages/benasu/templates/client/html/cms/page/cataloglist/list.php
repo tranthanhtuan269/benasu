@@ -30,29 +30,20 @@
 
 $enc = $this->encoder();
 
-
 ?>
-<div class="catalog-list swiffy-slider slider-nav-outside">
-	<div class="catalog-list-items product-list slider-container">
 
-		<?= $this->partial(
-			$this->config( 'client/html/common/partials/products', 'common/partials/products' ),
-			array(
-				'require-stock' => (int) $this->config( 'client/html/basket/require-stock', true ),
-				'basket-add' => $this->config( 'client/html/cms/page/basket-add', false ),
-				'products' => $this->get( 'products', map() ),
-			)
-		) ?>
+<div class="products-slider custom-products owl-carousel owl-theme nav-outer show-nav-hover nav-image-center" data-owl-options="{
+						'dots': false,
+						'nav': true
+					}">
 
-	</div>
-
-	<button type="button" class="slider-nav" aria-label="Go to previous"></button>
-	<button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
-
-	<?php if( isset( $this->itemsStockUrl ) ) : ?>
-		<?php foreach( $this->itemsStockUrl as $url ) : ?>
-			<script class="items-stock" defer src="<?= $enc->attr( $url ) ?>"></script>
-		<?php endforeach ?>
-	<?php endif ?>
+	<?= $this->partial(
+		$this->config( 'client/html/common/partials/products', 'common/partials/products' ),
+		array(
+			'require-stock' => (int) $this->config( 'client/html/basket/require-stock', true ),
+			'basket-add' => $this->config( 'client/html/cms/page/basket-add', false ),
+			'products' => $this->get( 'products', map() ),
+		)
+	) ?>
 
 </div>
