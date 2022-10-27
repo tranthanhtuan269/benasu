@@ -92,7 +92,7 @@ $currency = substr($this->translate('currency', $prices->getCurrencyId()->first(
 							<span class="product-label label-hot"><?= $enc->html( $this->translate( 'client', 'New' ) ) ?></span>
 							<?php if($rebate > 0): ?>
 							<div class="product-label label-sale">
-								<?php echo $this->number((- $rebate)  * 100 / $price, 0) . '%'; ?>
+								<?php echo $this->number((- $rebate)  * 100 / ($price + $rebate), 0) . '%'; ?>
 							</div>
 							<?php endif ?>
 						</div>

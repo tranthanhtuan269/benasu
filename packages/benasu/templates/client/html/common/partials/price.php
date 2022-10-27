@@ -71,9 +71,9 @@ $notax = $this->translate( 'client', '+ %1$s%% VAT' );
 
 		<span class="value">
 			<?php if( $priceItem->getValue() !== null ) : ?>
-				<?php if( $priceItem->getRebate() > 0 ) : ?>
-					<del class="old-price"><?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?></del>
-					<?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue() - $priceItem->getRebate(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?>
+				<?php if( $priceItem->getRebate() > 0 ) : ?> 
+					<del class="old-price"><?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue() + $priceItem->getRebate(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?></del>
+					<?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?>
 				<?php else : ?>
 					<?= $enc->html( sprintf( $format['value'], $this->number( $priceItem->getValue(), $priceItem->getPrecision() ), $currency ), $enc::TRUST ) ?>
 				<?php endif ?>
