@@ -17,6 +17,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SiteConfigController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\HomeController;
 
 $params = [];
 $conf = ['prefix' => '', 'where' => []];
@@ -54,6 +56,7 @@ Route::post('upload-crop-image', [BlogController::class, 'uploadCropImage'])->na
 Route::prefix('admin')->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('configs', SiteConfigController::class);
+    Route::resource('orders', OrderController::class);
 });
 
 Route::get('/blog', [BlogController::class, 'indexf'])->name('blogs.indexf');
