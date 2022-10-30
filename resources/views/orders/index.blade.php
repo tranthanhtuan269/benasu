@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Page List</h2>
+                    <h2>Order List</h2>
                 </div>
             </div>
         </div>
@@ -47,12 +47,7 @@
                         <td>{{ $order->statusdelivery }}</td>
                         <td>{{ $order->ctime }}</td>
                         <td>
-                            <form action="{{ route('orders.destroy',$order->order_id) }}" method="post">
-                                <a class="btn btn-primary" href="{{ route('orders.edit',$order->order_id) }}">Edit</a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <a class="btn btn-primary" href="{{ route('orders.show',$order->order_id) }}">Show</a>
                         </td>
                     </tr>
                 @endforeach

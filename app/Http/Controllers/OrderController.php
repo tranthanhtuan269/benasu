@@ -39,17 +39,29 @@ class OrderController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $order = \DB::table('mshop_order_base')
+        $order_detail = \DB::table('mshop_order_base')
                 ->join('mshop_order', 'mshop_order_base.id', '=', 'mshop_order.baseid')
+                ->join('mshop_order_base_product', 'mshop_order_base.id', '=', 'mshop_order_base_product.baseid')
                 ->join('users', 'users.id', '=', 'mshop_order_base.customerid')
                 ->select(
                     'mshop_order_base.id as order_id', 'mshop_order_base.currencyid','mshop_order_base.price','mshop_order_base.rebate','mshop_order_base.tax',
                     'users.id as user_id', 'users.name', 'users.email',
-                    'mshop_order.statuspayment', 'mshop_order.statusdelivery'
+                    'users.id as address1', 'users.city', 'users.state', 'users.countryid',
+                    'mshop_order.statuspayment', 'mshop_order.statusdelivery',
+                    'mshop_order_base_product.prodid', 
+                    'mshop_order_base_product.prodcode', 
+                    'mshop_order_base_product.name as product_name', 
+                    'mshop_order_base_product.quantity as product_quantity', 
+                    'mshop_order_base_product.mediaurl as product_mediaurl', 
+                    'mshop_order_base_product.currencyid as product_currencyid', 
+                    'mshop_order_base_product.price as product_price', 
+                    'mshop_order_base_product.costs as product_costs',
+                    'mshop_order_base_product.rebate as product_rebate',
+                    'mshop_order_base_product.tax as product_tax',
                     )
-                ->where('mshop_order_base.id', $id)->first();
-        if($order){
-            return view('orders.show',compact('order'));
+                ->where('mshop_order_base.id', $id)->get();
+        if($order_detail){
+            return view('orders.show',compact('order_detail'));
         }else{
             abort(404);
         }
