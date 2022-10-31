@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\User;
 
 class OrderController extends Controller
 {
@@ -11,6 +12,53 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function reward(Request $request, $id)
+    {
+        $order_detail = \DB::table('mshop_order_base')
+                ->join('mshop_order', 'mshop_order_base.id', '=', 'mshop_order.baseid')
+                ->join('users', 'users.id', '=', 'mshop_order_base.customerid')
+                ->select(
+                    'mshop_order_base.id as order_id', 'mshop_order_base.currencyid','mshop_order_base.price','mshop_order_base.rebate','mshop_order_base.tax',
+                    'users.id as user_id', 'users.name', 'users.email', 'users.coins',
+                    'users.id as address1', 'users.city', 'users.state', 'users.countryid',
+                    'mshop_order.statuspayment', 'mshop_order.statusdelivery'
+                    )
+                ->where('mshop_order_base.id', $id)->first();
+
+        if($order_detail){
+            // - First time sign up will have 3% off in total order it will be forever.
+            $user_id = $order_detail->user_id;
+
+            $user = User::find($user_id);
+
+            $check_first = \DB::table('mshop_order_base')
+                            ->join('mshop_order', 'mshop_order_base.id', '=', 'mshop_order.baseid')
+                            ->where('mshop_order.statuspayment', '>', -1)
+                            ->where('mshop_order.statusdelivery', '>', -1)
+                            ->where('customerid', $user_id)->count();
+
+            
+            if($check_first == 1 && $user){
+                if(!isset($user->coins)){
+                    $user->coins = 0 + floatval($order_detail->price * 0.03);
+                }else{
+                    $user->coins = $user->coins + floatval($order_detail->price * 0.03);
+                }
+                $user->save();
+            }
+
+            // - They will have a code to refer friends and get 3% credit in friend’s order, this money only use to buy something in the website
+            // if($user->refer){
+            //     $user->refer->coins = $user->refer->coins + ($order_detail->price * 0.03);
+            // }
+
+
+            // return view('orders.show',compact('order_detail'));
+        }else{
+            abort(404);
+        }
+    }
+
     public function index(Request $request)
     {
         $orderList = \DB::table('mshop_order_base')
@@ -22,7 +70,7 @@ class OrderController extends Controller
                     'mshop_order.statuspayment', 'mshop_order.statusdelivery'
                     )
                 ->where('mshop_order.statuspayment', '>', -1)
-                // ->where('mshop_order.statusdelivery', '>', -1)
+                ->where('mshop_order.statusdelivery', '>', -1)
                 // ->get(6);
                 ->paginate(6);
 

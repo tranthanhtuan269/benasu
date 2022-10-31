@@ -54,6 +54,7 @@ Route::group($conf ?? [], function() {
 Route::post('upload_image', [BlogController::class, 'uploadImage'])->name('upload');
 Route::post('upload-crop-image', [BlogController::class, 'uploadCropImage'])->name('uploadCrop');
 Route::prefix('admin')->group(function () {
+    Route::get('orders/{id}/reward', [OrderController::class, 'reward'])->name('reward');
     Route::resource('blogs', BlogController::class);
     Route::resource('configs', SiteConfigController::class);
     Route::resource('orders', OrderController::class);
