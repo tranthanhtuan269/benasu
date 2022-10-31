@@ -421,3 +421,17 @@
 #search_page .product-list .product-details{
 	max-width: none;
 }
+
+.aimeos:not(.cms-page) .catalog-list-items:not(.swiffy-slider){
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 12px;
+}
+
+.product-list figure{
+	margin-right:0;
+}
+
+.product-list .product-action{
+	padding-bottom: 10px;
+}

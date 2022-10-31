@@ -3,6 +3,7 @@
 	text-align: start;
 	font-weight: normal;
 	padding: 0.5rem 1rem;
+	font-size: 28px;
 	color: var(--ai-secondary);
 	border-bottom: 1px solid var(--ai-secondary);
 }
@@ -52,6 +53,7 @@
 
 .account-profile-address h2 {
 	margin: 8px 15px;
+	font-size: 18px;
 }
 
 .account-profile-address .row {

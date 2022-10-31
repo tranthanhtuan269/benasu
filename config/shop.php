@@ -59,6 +59,7 @@ return $routes + [
 		'checkout-update' => [ 'checkout/update' ],
 		'supplier-detail' => [ 'locale/select','basket/mini','catalog/tree','catalog/search','supplier/detail','catalog/lists'],
 		'cms' => [ 'basket/mini','catalog/tree','cms/page' ],
+		'favorite' => ['account/favorite','account/watch','catalog/session','account/review','account/subscription','account/history'],
 	],
 
 	'resource' => [

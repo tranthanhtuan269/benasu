@@ -8,24 +8,44 @@
 	text-align: start;
 	font-weight: normal;
 	padding: 0.5rem 1rem;
+	font-size: 28px;
 	color: var(--ai-secondary);
 	border-bottom: 1px solid var(--ai-secondary);
 }
 
 .account-favorite .favorite-items {
-	display: flex;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 3px;
+}
+.aimeos:not(.cms-page) .product-list .product{
+	width: auto;
 }
 
 .account-favorite .favorite-item {
 	position: relative;
-	text-align: end;
+	text-align: center;
 	width: 180px;
 	margin: 1%;
 }
 
+.aimeos:not(.cms-page) .product-list .product{
+	text-align: center;
+}
+
 .account-favorite .name {
 	margin-top: 0.75rem;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.aimeos .product .price-item.default .value{
+	font-size: 1.8rem;
+}
+
+.aimeos .product .price-item.default .value .old-price{
+	font-size: 1.4rem;
 }
 
 .account-favorite .price-list .rebatepercent {

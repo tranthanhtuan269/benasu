@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
+use Aimeos\Shop\Facades\Shop;
 
 class HomeController extends Controller
 {
@@ -21,5 +22,16 @@ class HomeController extends Controller
 
         return view('orders.index', compact('orderList'));
 
+    }
+
+    public function indexAction()
+    {
+        foreach( config( 'shop.page.favorite' ) as $name )
+        {
+            $params['aiheader'][$name] = Shop::get( $name )->header();
+            $params['aibody'][$name] = Shop::get( $name )->body();
+        }
+        // do some more stuff
+        return \View::make('account.favorite', $params);
     }
 }

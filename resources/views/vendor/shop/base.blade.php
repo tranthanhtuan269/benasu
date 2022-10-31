@@ -141,7 +141,7 @@
 
                         <a href="/login" class="header-icon" title="login"><i class="icon-user-2"></i></a>
 
-                        <a href="/profile" class="header-icon" title="wishlist"><i class="icon-wishlist-2"></i></a>
+                        <a href="/favorite" class="header-icon" title="wishlist"><i class="icon-wishlist-2"></i></a>
 
 						@yield('aimeos_head_basket')
                     </div>
@@ -345,7 +345,7 @@
                     <li><a href="/login">My Account</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="/bloglist">Blog</a></li>
-                    <li><a href="/profile">My Wishlist</a></li>
+                    <li><a href="/favorite">My Wishlist</a></li>
                     <li><a href="/shop/basket">Cart</a></li>
                     <li><a href="/login" class="login-link">Log In</a></li>
                 </ul>
