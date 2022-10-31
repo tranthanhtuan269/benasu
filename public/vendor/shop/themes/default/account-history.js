@@ -20,6 +20,20 @@ AimeosAccountHistory = {
 
 			return false;
 		});
+		$('.address-billing .act-show').click(function(){
+			if($('#address-payment').hasClass('collapse')){
+				$('#address-payment').removeClass('collapse');
+			}else{
+				$('#address-payment').addClass('collapse');
+			}
+		})
+		$('.address-delivery-new .act-show').click(function(){
+			if($('#address-delivery-1').hasClass('collapse')){
+				$('#address-delivery-1').removeClass('collapse');
+			}else{
+				$('#address-delivery-1').addClass('collapse');
+			}
+		})
 	},
 
 
