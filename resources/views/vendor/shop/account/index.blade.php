@@ -2,6 +2,7 @@
 
 @section('aimeos_header')
     <title>{{ __( 'Profile') }}</title>
+    <link type="text/css" rel="stylesheet" href="{{ asset('vendor/shop/themes/default/aimeos.css?v=' . config( 'shop.version', 1 ) ) }}" />
     <?= $aiheader['locale/select'] ?? '' ?>
     <?= $aiheader['basket/mini'] ?? '' ?>
     <?= $aiheader['account/profile'] ?? '' ?>
