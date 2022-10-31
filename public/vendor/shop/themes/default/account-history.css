@@ -33,8 +33,15 @@
 	border: 1px solid var(--ai-secondary);
 	display: block;
 	width: 100%;
-	max-width: 6rem;
 	margin: auto;
+}
+
+.account-history .action .btn.hidden{
+	display: none;
+}
+
+.account-history .action .btn.close {
+    font-size: 14px;
 }
 
 .account-history-detail {
@@ -60,3 +67,5 @@
 .account-history-detail li.attr-item .value {
 	min-width: 0;
 }
+
+
