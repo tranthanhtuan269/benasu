@@ -45,13 +45,28 @@ class OrderController extends Controller
                     $user->coins = $user->coins + floatval($order_detail->price * 0.03);
                 }
                 $user->save();
+
+                // - They will have a code to refer friends and get 3% credit in friend’s order, this money only use to buy something in the website
+                $refer_lv1 = $user->refer;
+                if($refer_lv1){
+                    if(!isset($refer_lv1->coins)){
+                        $refer_lv1->coins = 0 + floatval($order_detail->price * 0.03);
+                    }else{
+                        $refer_lv1->coins = $refer_lv1->coins + floatval($order_detail->price * 0.03);
+                    }
+                    $refer_lv1->save();
+                    
+                    $refer_lv2 = $refer_lv1->refer;
+                    if($refer_lv2){
+                        if(!isset($refer_lv2->coins)){
+                            $refer_lv2->coins = 0 + floatval($order_detail->price * 0.01);
+                        }else{
+                            $refer_lv2->coins = $refer_lv2->coins + floatval($order_detail->price * 0.01);
+                        }
+                        $refer_lv2->save();
+                    }
+                }
             }
-
-            // - They will have a code to refer friends and get 3% credit in friend’s order, this money only use to buy something in the website
-            // if($user->refer){
-            //     $user->refer->coins = $user->refer->coins + ($order_detail->price * 0.03);
-            // }
-
 
             // return view('orders.show',compact('order_detail'));
         }else{

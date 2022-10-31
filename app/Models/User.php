@@ -45,11 +45,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function refers()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(User::class, 'refer_id');
     }
 
     public function refer()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(User::class, 'refer_id');
     }
 }
