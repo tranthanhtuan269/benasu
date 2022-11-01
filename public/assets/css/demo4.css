@@ -6368,6 +6368,7 @@ figure .porto-loading-icon {
 }
 .product-list .product-action {
   margin-bottom: 0;
+  padding-bottom: 10px;
 }
 .product-list:hover .btn-icon {
   padding-right: 0.8rem;
