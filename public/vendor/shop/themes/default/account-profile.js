@@ -95,6 +95,29 @@ AimeosAccountProfile = {
 		this.onAddress();
 		this.onAddressNew();
 		this.onCheckMandatory();
+
+		$('.btn-save-refer').click(function(){
+			var prefer_code = $('#user-presenter').val();
+			if(prefer_code.length <= 0){
+				return false;
+			}else{
+				var data = {
+					'prefer_code' : prefer_code
+				}
+				$.ajax({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+					method: 'POST',
+					data : data,
+					dataType: 'json',
+					url: '/users/refer', // returned from OPTIONS call
+				}).done( function( result ) {
+					// var data = result.data;
+					console.log(data);
+				});
+			}
+		})
 	}
 };
 

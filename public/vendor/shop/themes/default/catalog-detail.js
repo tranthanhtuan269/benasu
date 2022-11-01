@@ -466,7 +466,7 @@ $(document).ready(function(){
                                 </div>\
                                 <!-- End .product-container -->\
                                 <div class="price-box">\
-                                    <span class="product-price">$'+format("en-US", "USD", products[i].prices[0]['price.value'] - products[i].prices[0]['price.rebate'])+'</span>\
+                                    <span class="product-price">$'+format("en-US", "USD", products[i].prices[0]['price.value'])+'</span>\
                                 </div>\
                                 <!-- End .price-box -->\
                             </div>\

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use Aimeos\Shop\Facades\Shop;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -33,5 +34,25 @@ class HomeController extends Controller
         }
         // do some more stuff
         return \View::make('account.favorite', $params);
+    }
+
+    public function referAction(Request $request)
+    {
+        if($request->prefer_code){
+            // find user refer
+            $refer_id = substr($request->prefer_code, 8);
+            $refer = User::find($refer_id);
+            if($refer){
+                $user = \Auth::user();
+                $user->refer_id = $refer_id;
+                $user->save();
+
+                return response()->json(['status'=>'200', 'message' => 'Save Success']);
+            }else{
+                return response()->json(['status'=>'404', 'message' => 'Not found']);
+            }
+        }else{
+            return response()->json(['status'=>'301', 'message' => 'Not success']);
+        }
     }
 }

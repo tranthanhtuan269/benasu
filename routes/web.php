@@ -67,3 +67,4 @@ Route::resource('comments', CommentController::class);
 Route::resource('pages', PageController::class);
 Route::get('pages/{slug}', [PageController::class, 'slug'])->name('pages.show');
 Route::get('favorite', [HomeController::class, 'indexAction'])->name('favorite');
+Route::post('users/refer', [HomeController::class, 'referAction'])->name('refer');

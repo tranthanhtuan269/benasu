@@ -41,6 +41,41 @@
         <?= $aibody['account/history'] ?? '' ?>
         <?= $aibody['account/favorite'] ?? '' ?>
         <?= $aibody['account/watch'] ?? '' ?>
+
+        <section class="aimeos account-refer" data-jsonurl="http://myshop.test/jsonapi">
+            <div class="container-xxl">
+                <div class="account-profile-address">
+                <h1 class="header">Referrer</h1>
+                <form method="POST" action="/profile">
+                    <input class="csrf-token" type="hidden" name="_token" value="jznOeyu4sF4MdBjWM8q0NwlxNiHOJ3z7GSiMvGYE">
+                    <div class="row">
+                    <div class="billing col-md-12">
+                        <div class="form-list">
+                            <div class="form-item form-group row user-presenter">
+                                <label class="col-md-4" for="user-presenter">Your Referrer code: </label>
+                                <div class="col-md-8">
+                                <input class="form-control" type="text" id="user-presenter" value="Benasu-0{{ \Auth::id() }}" placeholder="Referrer code" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list">
+                            <div class="form-item form-group row user-presenter">
+                                <label class="col-md-4" for="user-presenter">Referrer code: </label>
+                                <div class="col-md-8">
+                                <input class="form-control" type="text" id="user-presenter" name="presenter" value="" placeholder="Referrer code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <div class="btn btn-primary btn-save-refer"> Save</div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </section>
     </div>
 </main>
 @stop
