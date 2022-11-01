@@ -37,33 +37,56 @@ class OrderController extends Controller
                             ->where('mshop_order.statusdelivery', '>', -1)
                             ->where('customerid', $user_id)->count();
 
-            
-            if($check_first == 1 && $user){
-                if(!isset($user->coins)){
-                    $user->coins = 0 + floatval($order_detail->price * 0.03);
-                }else{
-                    $user->coins = $user->coins + floatval($order_detail->price * 0.03);
+            if($user){
+                if($check_first == 1){
+                    if(!isset($user->coins)){
+                        $user->coins = 0 + floatval($order_detail->price * 0.03);
+                    }else{
+                        $user->coins = $user->coins + floatval($order_detail->price * 0.03);
+                    }
+                    $user->save();
                 }
-                $user->save();
 
                 // - They will have a code to refer friends and get 3% credit in friend’s order, this money only use to buy something in the website
                 $refer_lv1 = $user->refer;
+
                 if($refer_lv1){
-                    if(!isset($refer_lv1->coins)){
-                        $refer_lv1->coins = 0 + floatval($order_detail->price * 0.03);
-                    }else{
-                        $refer_lv1->coins = $refer_lv1->coins + floatval($order_detail->price * 0.03);
-                    }
-                    $refer_lv1->save();
-                    
-                    $refer_lv2 = $refer_lv1->refer;
-                    if($refer_lv2){
-                        if(!isset($refer_lv2->coins)){
-                            $refer_lv2->coins = 0 + floatval($order_detail->price * 0.01);
+                    $number_refer_of_lv1 = count($refer_lv1->refers);
+                    // - The system also needs to limit the number users can refer, maximum is 20 and other referrals will be down to 1% credit.
+                    if($number_refer_of_lv1 > 20){
+                        if(!isset($refer_lv1->coins)){
+                            $refer_lv1->coins = 0 + floatval($order_detail->price * 0.01);
                         }else{
-                            $refer_lv2->coins = $refer_lv2->coins + floatval($order_detail->price * 0.01);
+                            $refer_lv1->coins = $refer_lv1->coins + floatval($order_detail->price * 0.01);
                         }
-                        $refer_lv2->save();
+                        $refer_lv1->save();
+                        
+                        $refer_lv2 = $refer_lv1->refer;
+                        if($refer_lv2){
+                            if(!isset($refer_lv2->coins)){
+                                $refer_lv2->coins = 0 + floatval($order_detail->price * 0.01);
+                            }else{
+                                $refer_lv2->coins = $refer_lv2->coins + floatval($order_detail->price * 0.01);
+                            }
+                            $refer_lv2->save();
+                        }
+                    }else{
+                        if(!isset($refer_lv1->coins)){
+                            $refer_lv1->coins = 0 + floatval($order_detail->price * 0.03);
+                        }else{
+                            $refer_lv1->coins = $refer_lv1->coins + floatval($order_detail->price * 0.03);
+                        }
+                        $refer_lv1->save();
+                        
+                        $refer_lv2 = $refer_lv1->refer;
+                        if($refer_lv2){
+                            if(!isset($refer_lv2->coins)){
+                                $refer_lv2->coins = 0 + floatval($order_detail->price * 0.01);
+                            }else{
+                                $refer_lv2->coins = $refer_lv2->coins + floatval($order_detail->price * 0.01);
+                            }
+                            $refer_lv2->save();
+                        }
                     }
                 }
             }
