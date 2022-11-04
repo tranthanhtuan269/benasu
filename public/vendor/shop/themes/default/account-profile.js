@@ -137,7 +137,7 @@ AimeosAccountProfile = {
 					)
 				}else{
 					Swal.fire(
-						'Great!',
+						'Congratulations!',
 						result.message,
 						'success'
 					)

@@ -77,7 +77,7 @@ class HomeController extends Controller
                 'editor' => 'admin@myshop.test'
             ]);
             
-            return response()->json(['status'=>'200', 'message' => 'You created a coupon!', 'coupon' => $coupon]);
+            return response()->json(['status'=>'200', 'message' => 'Your redemption was successful', 'coupon' => $coupon]);
         }else{
             return response()->json(['status'=>'301', 'message' => 'Not success']);
         }

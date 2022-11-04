@@ -100,7 +100,7 @@ $couponList = \DB::table('mshop_coupon_code')->where('editor', $email)->get();
 	<section class="aimeos account-profile" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 		<div class="container-xxl">
 			<div class="account-profile">
-				<h1 class="header">Profile</h1>
+				<h1 class="header">Reward History</h1>
 
 				<form method="POST" action="<?= $enc->attr( $this->link( 'client/html/account/profile/url' ) ) ?>">
 					<?= $this->csrf()->formfield() ?>
@@ -113,25 +113,7 @@ $couponList = \DB::table('mshop_coupon_code')->where('editor', $email)->get();
 									<div class="form-item form-group row salutation">
 
 										<label class="col-md-4" for="address-payment-salutation">
-											Fullname:
-										</label>
-										<div class="col-md-8">
-											<strong><?php echo $user->firstname . ' ' . $user->lastname; ?></strong>
-										</div>
-									</div>
-									<div class="form-item form-group row salutation">
-
-										<label class="col-md-4" for="address-payment-salutation">
-											Email:
-										</label>
-										<div class="col-md-8">
-											<strong><?php echo $user->email; ?></strong>
-										</div>
-									</div>
-									<div class="form-item form-group row salutation">
-
-										<label class="col-md-4" for="address-payment-salutation">
-											Coins:
+											My Rewards Balance:
 										</label>
 										<div class="col-md-8">
 											<strong>$<?php echo $user->coins; ?></strong>
