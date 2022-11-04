@@ -163,7 +163,7 @@ $couponList = \DB::table('mshop_coupon_code')->where('editor', $email)->get();
 									</table>
 									<div class="form-item form-group row salutation">
 										<div class="col-md-12 text-center">
-											<div class="btn btn-primary" id="create-coupon-btn">Create Coupon</div>
+											<div class="btn btn-primary" id="create-coupon-btn">Redeem Rewards</div>
 										</div>
 									</div>
 								</div>
