@@ -69,7 +69,7 @@ class HomeController extends Controller
 
             \DB::table('mshop_coupon_code')->insert([
                 'siteid' => '1.',
-                'parentid' => 5, 
+                'parentid' => 9, 
                 'count' => 1,
                 'code' => $coupon,
                 'mtime' => date("Y-m-d H:i:s"),
