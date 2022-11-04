@@ -8,8 +8,12 @@ class Mycoupon
 {
     public function update( \Aimeos\MShop\Order\Item\Base\Iface $base ) : \Aimeos\MShop\Coupon\Provider\Iface
     {
-        $user = \Auth::user();
-        $coins = $user->coins;
+        if(\Auth::check()){
+            $user = \Auth::user();
+            $coins = $user->coins;
+        }else{
+            $coins = 0;
+        }
         $products = $this->createRebateProducts( $base, 'demo-rebate', $coins );
         $base->setCoupon( $this->getCode(), $products );
         return $this;

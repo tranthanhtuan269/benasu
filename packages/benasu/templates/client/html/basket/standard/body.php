@@ -86,7 +86,7 @@ $enc = $this->encoder();
 									<?php foreach( $coupons as $code => $products ) : $params = array( 'b_action' => 'coupon-delete', 'b_coupon' => $code ) ?>
 									<li class="attr-item">
 										<span class="coupon-code"><?= $enc->html( $code ) ?></span>
-										<a class="minibutton delete" href="<?= $enc->attr( $this->link( 'client/html/basket/standard/url', $params ) ) ?>"></a>
+										<a class="minibutton delete" href="<?= $enc->attr( $this->link( 'client/html/basket/standard/url', $params ) ) ?>">x</a>
 									</li>
 									<?php endforeach ?>
 								</ul>

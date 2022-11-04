@@ -9,7 +9,7 @@ class Mydecorator
     public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $base ) : \Aimeos\MShop\Price\Item\Iface
     {
         // do something before
-        $priceItem = $this->getProvider()->calcPrice( $base ) - 10;
+        $priceItem = $this->getProvider()->calcPrice( $base );
         // do something after
 
         return $priceItem;

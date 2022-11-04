@@ -13805,3 +13805,7 @@ section {
     left: 32%;
   }
 }
+.minibutton.delete{
+  position: relative;
+  top: -12px;
+}
