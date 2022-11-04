@@ -118,6 +118,39 @@ AimeosAccountProfile = {
 				});
 			}
 		})
+
+		$('#create-coupon-btn').click(function(){
+			$.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				method: 'POST',
+				dataType: 'json',
+				url: '/users/create-coupon', // returned from OPTIONS call
+			}).done( function( result ) {
+				console.log(result);
+				if(result.status == -1){
+					Swal.fire(
+						'Error!',
+						result.message,
+						'error'
+					)
+				}else{
+					Swal.fire(
+						'Great!',
+						result.message,
+						'success'
+					)
+					var count = $('#coupon-list tr').length;
+
+					var html = '<tr>\
+							      <th scope="row">'+(count+1)+'</th>\
+							      <td>'+result.coupon+'</td>\
+							    </tr>';
+					$('#coupon-list').append(html);
+				}
+			});
+		})
 	}
 };
 

@@ -10,19 +10,16 @@ use App\Models\User;
 class HomeController extends Controller
 {
     public function test(){
-        $orderList = \DB::table('mshop_order_base')
-                ->join('mshop_order', 'mshop_order_base.id', '=', 'mshop_order.baseid')
-                ->join('users', 'users.id', '=', 'mshop_order_base.customerid')
-                ->select(
-                    'mshop_order_base.id as order_id', 'mshop_order_base.currencyid','mshop_order_base.price','mshop_order_base.rebate','mshop_order_base.tax',
-                    'users.id as user_id', 'users.name', 'users.email',
-                    'mshop_order.statuspayment', 'mshop_order.statusdelivery'
-                    )
-                ->get();
-        dd($orderList);
-
-        return view('orders.index', compact('orderList'));
-
+        dd(md5(uniqid(rand(), true)));
+        \DB::table('mshop_coupon_code')->insert([
+            'siteid' => '1.',
+            'parentid' => 5, 
+            'count' => 1,
+            'code' => md5(uniqid(rand(), true)),
+            'mtime' => date("Y-m-d H:i:s"),
+            'ctime' => date("Y-m-d H:i:s"),
+            'editor' => 'admin@myshop.test'
+        ]);
     }
 
     public function indexAction()
@@ -51,6 +48,36 @@ class HomeController extends Controller
             }else{
                 return response()->json(['status'=>'404', 'message' => 'Not found']);
             }
+        }else{
+            return response()->json(['status'=>'301', 'message' => 'Not success']);
+        }
+    }
+
+    public function createCoupon(Request $request)
+    {
+        if(\Auth::check()){
+            $user = \Auth::user();
+
+            if($user->coins < 1000){
+                return response()->json(['status'=>'-1', 'message' => 'Your account is not enough!']);
+            }
+
+            $user->coins = $user->coins - 1000.0;
+            $user->save();
+
+            $coupon = md5(uniqid(rand(), true));
+
+            \DB::table('mshop_coupon_code')->insert([
+                'siteid' => '1.',
+                'parentid' => 5, 
+                'count' => 1,
+                'code' => $coupon,
+                'mtime' => date("Y-m-d H:i:s"),
+                'ctime' => date("Y-m-d H:i:s"),
+                'editor' => 'admin@myshop.test'
+            ]);
+            
+            return response()->json(['status'=>'200', 'message' => 'You created a coupon!', 'coupon' => $coupon]);
         }else{
             return response()->json(['status'=>'301', 'message' => 'Not success']);
         }

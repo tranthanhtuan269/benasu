@@ -67,4 +67,6 @@ Route::resource('comments', CommentController::class);
 Route::resource('pages', PageController::class);
 Route::get('pages/{slug}', [PageController::class, 'slug'])->name('pages.show');
 Route::get('favorite', [HomeController::class, 'indexAction'])->name('favorite');
+Route::get('test', [HomeController::class, 'test'])->name('test');
 Route::post('users/refer', [HomeController::class, 'referAction'])->name('refer');
+Route::post('users/create-coupon', [HomeController::class, 'createCoupon'])->name('createCoupon');

@@ -92,14 +92,92 @@ $selectfcn = function( $list, $key, $value ) {
 $addr = $this->get( 'addressBilling', [] );
 $pos = 0;
 
-
+$user = \Auth::user();
+$email = $user->email;
+$couponList = \DB::table('mshop_coupon_code')->where('editor', $email)->get();
 ?>
 <?php if( isset( $this->profileItem ) ) : ?>
+	<section class="aimeos account-profile" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
+		<div class="container-xxl">
+			<div class="account-profile">
+				<h1 class="header">Profile</h1>
+
+				<form method="POST" action="<?= $enc->attr( $this->link( 'client/html/account/profile/url' ) ) ?>">
+					<?= $this->csrf()->formfield() ?>
+
+					<div class="row">
+						<div class="profile col-md-12">
+							<div class="panel panel-default profile">
+
+								<div class="form-list">
+									<div class="form-item form-group row salutation">
+
+										<label class="col-md-4" for="address-payment-salutation">
+											Fullname:
+										</label>
+										<div class="col-md-8">
+											<strong><?php echo $user->firstname . ' ' . $user->lastname; ?></strong>
+										</div>
+									</div>
+									<div class="form-item form-group row salutation">
+
+										<label class="col-md-4" for="address-payment-salutation">
+											Email:
+										</label>
+										<div class="col-md-8">
+											<strong><?php echo $user->email; ?></strong>
+										</div>
+									</div>
+									<div class="form-item form-group row salutation">
+
+										<label class="col-md-4" for="address-payment-salutation">
+											Coins:
+										</label>
+										<div class="col-md-8">
+											<strong>$<?php echo $user->coins; ?></strong>
+										</div>
+									</div>
+
+									<table class="table">
+									  <thead>
+									    <tr>
+									      <th scope="col">#</th>
+									      <th scope="col">Coupon</th>
+									      <th scope="col">Status</th>
+									    </tr>
+									  </thead>
+									  <tbody id="coupon-list">
+									  	<?php
+									  		foreach($couponList as $k=>$c):
+									  	?>
+
+									    <tr>
+									      <th scope="row"><?php echo ($k+1); ?></th>
+									      <td><?php echo $c->code; ?></td>
+									      <td><?php if($c->count > 0 ) echo 'valid'; else echo 'expired' ?></td>
+									    </tr>
+									    <?php
+									    	endforeach
+									    ?>
+									  </tbody>
+									</table>
+									<div class="form-item form-group row salutation">
+										<div class="col-md-12 text-center">
+											<div class="btn btn-primary" id="create-coupon-btn">Create Coupon</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 
 <section class="aimeos account-profile" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 	<div class="container-xxl">
 		<div class="account-profile-address">
-
 			<h1 class="header"><?= $enc->html( $this->translate( 'client', 'address' ) ) ?></h1>
 
 			<form method="POST" action="<?= $enc->attr( $this->link( 'client/html/account/profile/url' ) ) ?>">
@@ -1187,4 +1265,5 @@ $pos = 0;
 	</div>
 </section>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php endif ?>

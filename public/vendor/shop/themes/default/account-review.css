@@ -4,6 +4,7 @@
 	text-align: start;
 	font-weight: normal;
 	padding: 0.5rem 1rem;
+	font-size: 28px;
 	color: var(--ai-secondary);
 }
 
@@ -46,4 +47,8 @@
 .account-review .btn {
 	display: block;
 	margin: 1rem auto;
+}
+
+.account-profile-address h1{
+	font-size: 28px;
 }
