@@ -146,6 +146,7 @@ AimeosAccountProfile = {
 					var html = '<tr>\
 							      <th scope="row">'+(count+1)+'</th>\
 							      <td>'+result.coupon+'</td>\
+								  <td>valid</td>\
 							    </tr>';
 					$('#coupon-list').append(html);
 				}
