@@ -125,7 +125,7 @@
                             <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
                             <form action="/shop" method="get">
                                 <div class="header-search-wrapper">
-                                    <input type="search" class="form-control" name="f_search" id="q" placeholder="Search..." required>
+                                    <input type="text" class="form-control" name="f_search" id="q" placeholder="Search..." required>
                                     <!-- End .select-custom -->
                                     <button class="btn icon-magnifier p-0" title="search" type="submit"></button>
                                 </div>
@@ -324,27 +324,12 @@
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li><a href="/">Home</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-
-                <ul class="mobile-menu mt-2 mb-2">
-                    <li class="border-0">
-                        <a href="#">
-							Special Offer!
-						</a>
-                    </li>
-                    <li class="border-0">
-                        <a href="#" target="_blank">
-							Buy Porto!
-							<span class="tip tip-hot">Hot</span>
-						</a>
-                    </li>
+                    <li><a href="/blog">Blog</a></li>
                 </ul>
 
                 <ul class="mobile-menu">
                     <li><a href="/login">My Account</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="/bloglist">Blog</a></li>
+                    <li><a href="/blogs">Blog</a></li>
                     <li><a href="/favorite">My Wishlist</a></li>
                     <li><a href="/shop/basket">Cart</a></li>
                     <li><a href="/login" class="login-link">Log In</a></li>
@@ -352,8 +337,8 @@
             </nav>
             <!-- End .mobile-nav -->
 
-            <form class="search-wrapper mb-2" action="#">
-                <input type="text" class="form-control mb-0" placeholder="Search..." required />
+            <form class="search-wrapper mb-2" action="/shop">
+                <input type="text" class="form-control mb-0" name="f_search" id="q" placeholder="Search..." required />
                 <button class="btn icon-search text-white bg-transparent p-0" type="submit"></button>
             </form>
 
