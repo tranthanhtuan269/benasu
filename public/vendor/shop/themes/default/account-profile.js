@@ -97,7 +97,7 @@ AimeosAccountProfile = {
 		this.onCheckMandatory();
 
 		$('.btn-save-refer').click(function(){
-			var prefer_code = $('#user-presenter').val();
+			var prefer_code = $('#user-presenter-2').val();
 			if(prefer_code.length <= 0){
 				return false;
 			}else{
@@ -113,8 +113,19 @@ AimeosAccountProfile = {
 					dataType: 'json',
 					url: '/users/refer', // returned from OPTIONS call
 				}).done( function( result ) {
-					// var data = result.data;
-					console.log(data);
+					if(result.status == 200){
+						Swal.fire(
+							'Good job!',
+							'You added your refer!',
+							'success'
+						)
+					}else{
+						Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'Something went wrong!'
+						})
+					}
 				});
 			}
 		})

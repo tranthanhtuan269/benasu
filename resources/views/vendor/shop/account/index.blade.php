@@ -3,6 +3,7 @@
 @section('aimeos_header')
     <title>{{ __( 'Profile') }}</title>
     <link type="text/css" rel="stylesheet" href="{{ asset('vendor/shop/themes/default/aimeos.css?v=' . config( 'shop.version', 1 ) ) }}" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?= $aiheader['locale/select'] ?? '' ?>
     <?= $aiheader['basket/mini'] ?? '' ?>
     <?= $aiheader['account/profile'] ?? '' ?>
@@ -54,7 +55,7 @@
                             <div class="form-item form-group row user-presenter">
                                 <label class="col-md-4" for="user-presenter">Your Referrer code: </label>
                                 <div class="col-md-8">
-                                <input class="form-control" type="text" id="user-presenter" value="Benasu-0{{ \Auth::id() }}" placeholder="Referrer code" disabled>
+                                <input class="form-control" type="text" id="user-presenter" value="Benasu-{{ \Auth::id() }}" placeholder="Referrer code" disabled>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +63,7 @@
                             <div class="form-item form-group row user-presenter">
                                 <label class="col-md-4" for="user-presenter">Referrer code: </label>
                                 <div class="col-md-8">
-                                <input class="form-control" type="text" id="user-presenter" name="presenter" value="" placeholder="Referrer code">
+                                <input class="form-control" type="text" id="user-presenter-2" name="presenter" value="@if(\Auth::user()->refer) Benasu-{{ \Auth::user()->refer->id }} @endif" placeholder="Referrer code">
                                 </div>
                             </div>
                         </div>
