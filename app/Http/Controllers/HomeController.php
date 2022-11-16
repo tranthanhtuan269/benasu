@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         if($request->prefer_code){
             // find user refer
-            $refer_id = substr($request->prefer_code, 8);
+            $refer_id = substr($request->prefer_code, 7);
             $refer = User::find($refer_id);
             if($refer){
                 $user = \Auth::user();
