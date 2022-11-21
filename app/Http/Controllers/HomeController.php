@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use Aimeos\Shop\Facades\Shop;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
     public function test(){
-        dd(md5(uniqid(rand(), true)));
+
+        dd(md5('benasu-4'));
+        dd(Hash::make('benasu-'.\Auth::id()));
         \DB::table('mshop_coupon_code')->insert([
             'siteid' => '1.',
             'parentid' => 5, 

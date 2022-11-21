@@ -23,6 +23,8 @@ use App\Http\Controllers\HomeController;
 $params = [];
 $conf = ['prefix' => '', 'where' => []];
 
+Route::get('/referal={code}', [HomeController::class, 'referr'])->name('referr');
+
 if( env( 'SHOP_MULTILOCALE' ) )
 {
     $conf['prefix'] .= '{locale}';

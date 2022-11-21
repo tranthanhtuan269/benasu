@@ -87,6 +87,9 @@ class RegisteredUserController extends Controller
             'siteid' => $this->siteid($request),
         ]);
 
+        $user->refer_code = md5('benasu-'.$user->id);
+        $user->save();
+
         if( config( 'app.shop_registration' ) )
         {
             $context = app( 'aimeos.context' )->get();

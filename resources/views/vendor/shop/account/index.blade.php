@@ -50,33 +50,21 @@
                 <form method="POST" action="/profile">
                     <input class="csrf-token" type="hidden" name="_token" value="jznOeyu4sF4MdBjWM8q0NwlxNiHOJ3z7GSiMvGYE">
                     <div class="row">
-                    <div class="billing col-md-12">
-                        <div class="form-list">
-                            <div class="form-item form-group row user-presenter">
-                                <label class="col-md-4" for="user-presenter">Your Referrer code: </label>
-                                <div class="col-md-8">
-                                <input class="form-control" type="text" id="user-presenter" value="Benasu-{{ \Auth::id() }}" placeholder="Referrer code" disabled>
+                        <div class="billing col-md-12">
+                            <div class="form-list">
+                                <div class="form-item form-group row user-presenter">
+                                    <label class="col-md-4" for="user-presenter">Your Referrer code: </label>
+                                    <div class="col-md-8">
+                                    <input class="form-control" type="text" id="user-presenter" value="{{ url('/') }}/referal={{ \Auth::user()->refer_code }}" placeholder="Referrer code" disabled>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-list">
-                            <div class="form-item form-group row user-presenter">
-                                <label class="col-md-4" for="user-presenter">Referrer code: </label>
-                                <div class="col-md-8">
-                                <input class="form-control" type="text" id="user-presenter-2" name="presenter" value="@if(\Auth::user()->refer) Benasu-{{ \Auth::user()->refer->id }} @endif" placeholder="Referrer code">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="button-group">
-                            <div class="btn btn-primary btn-save-refer"> Save</div>
-                        </div>
-                        </div>
-                    </div>
                     </div>
                 </form>
                 </div>
             </div>
-            </section>
+        </section>
     </div>
 </main>
 @stop

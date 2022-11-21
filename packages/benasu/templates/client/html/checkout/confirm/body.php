@@ -7,7 +7,20 @@
 
 $enc = $this->encoder();
 
+if(\Auth::check()){
+	$user = \Auth::user();
 
+	if($user){
+		if(!asset($user->refer_id)){
+			$user_refer = \App\Models\User::where('refer_code', $this->summaryBasket->getCustomerReference())->first();
+			
+			if($user_refer){
+				$user->refer_id = $user_refer->id;
+				$user->save();
+			}
+		}
+	}
+}
 ?>
 <section class="aimeos checkout-confirm" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 	<div class="container-xxl">
