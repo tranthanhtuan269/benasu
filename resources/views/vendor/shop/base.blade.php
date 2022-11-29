@@ -61,7 +61,11 @@
                                     <li><a href="/blogs">Blog</a></li>
                                     <li><a href="/profile">My Wishlist</a></li>
                                     <li><a href="/shop/basket">Cart</a></li>
+                                    @if(\Auth::check())
+                                    <li><a href="/logout">Log Out</a></li>
+                                    @else
                                     <li><a href="/login" class="login-link">Log In</a></li>
+                                    @endif
                                 </ul>
                             </div>
                             <!-- End .header-menu -->

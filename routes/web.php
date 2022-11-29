@@ -27,6 +27,8 @@ Route::get('/referal={code}', function () {
     return redirect('/');
 })->name('referr');
 
+Route::get('logout', '\App\Http\Controllers\HomeController@logout');
+
 if( env( 'SHOP_MULTILOCALE' ) )
 {
     $conf['prefix'] .= '{locale}';

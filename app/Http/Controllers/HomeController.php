@@ -85,4 +85,9 @@ class HomeController extends Controller
             return response()->json(['status'=>'301', 'message' => 'Not success']);
         }
     }
+
+    public function logout(Request $request) {
+        \Auth::logout();
+        return redirect('/login');
+    }
 }
