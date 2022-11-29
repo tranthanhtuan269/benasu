@@ -64,7 +64,7 @@
                                     @if(\Auth::check())
                                     <li><a href="/logout">Log Out</a></li>
                                     @else
-                                    <li><a href="/login" class="login-link">Log In</a></li>
+                                    <li><a href="/login">Log In</a></li>
                                     @endif
                                 </ul>
                             </div>
