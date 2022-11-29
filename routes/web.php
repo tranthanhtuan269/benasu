@@ -24,7 +24,7 @@ $params = [];
 $conf = ['prefix' => '', 'where' => []];
 
 Route::get('/referal={code}', function () {
-    return redirect('/');
+    return redirect('/?referal={code}');
 })->name('referr');
 
 Route::get('logout', '\App\Http\Controllers\HomeController@logout');
