@@ -8,7 +8,10 @@
 
 $enc = $this->encoder();
 
-
+if(!\Auth::check()){
+	header('Location: /login');
+	die();
+}
 ?>
 <section class="aimeos checkout-standard" data-jsonurl="<?= $enc->attr( $this->link( 'client/jsonapi/url' ) ) ?>">
 	<nav class="container-xxl">
