@@ -72,7 +72,11 @@
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="wishlist.html">My Wishlist</a></li>
                                     <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="login.html" class="login-link">Log In</a></li>
+                                    @if(\Auth::guest())
+                                    <li><a href="/login">Log In</a></li>
+                                    @else
+                                    <li><a href="/logout">Log Out</a></li>
+                                    @endif
                                 </ul>
                             </div>
                             <!-- End .header-menu -->
@@ -616,7 +620,11 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="wishlist.html">My Wishlist</a></li>
                     <li><a href="cart.html">Cart</a></li>
-                    <li><a href="login.html" class="login-link">Log In</a></li>
+                    @if(\Auth::guest())
+                    <li><a href="/login">Log In</a></li>
+                    @else
+                    <li><a href="/logout">Log Out</a></li>
+                    @endif
                 </ul>
             </nav>
             <!-- End .mobile-nav -->
