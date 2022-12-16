@@ -61,10 +61,10 @@
                                     <li><a href="/blogs">Blog</a></li>
                                     <li><a href="/profile">My Wishlist</a></li>
                                     <li><a href="/shop/basket">Cart</a></li>
-                                    @if(\Auth::check())
-                                    <li><a href="/logout">Log Out</a></li>
-                                    @else
+                                    @if(\Auth::guest())
                                     <li><a href="/login">Log In</a></li>
+                                    @else
+                                    <li><a href="/logout">Log Out</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -336,7 +336,11 @@
                     <li><a href="/blogs">Blog</a></li>
                     <li><a href="/favorite">My Wishlist</a></li>
                     <li><a href="/shop/basket">Cart</a></li>
-                    <li><a href="/login" class="login-link">Log In</a></li>
+                    @if(\Auth::guest())
+                    <li><a href="/login">Log In</a></li>
+                    @else
+                    <li><a href="/logout">Log Out</a></li>
+                    @endif
                 </ul>
             </nav>
             <!-- End .mobile-nav -->
