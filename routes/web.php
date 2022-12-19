@@ -19,6 +19,7 @@ use App\Http\Controllers\SiteConfigController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RewardController;
 
 $params = [];
 $conf = ['prefix' => '', 'where' => []];
@@ -64,6 +65,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('configs', SiteConfigController::class);
     Route::resource('orders', OrderController::class);
+    Route::resource('rewards', RewardController::class);
 });
 
 Route::get('/blog', [BlogController::class, 'indexf'])->name('blogs.indexf');

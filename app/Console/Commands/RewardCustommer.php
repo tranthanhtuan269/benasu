@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\User;
+use App\Models\LogReward;
 
 class RewardCustommer extends Command
 {
@@ -41,18 +42,27 @@ class RewardCustommer extends Command
                 ->where('mshop_order.statusdelivery', '>', -1)
                 ->where('mshop_order.statusreward', -1)->get();
 
+
         foreach($order_list as $order_detail){
             if($order_detail){
+
+                // save log 
+                $logReward = new LogReward;
+                $content = '';
+                $value = 0;
+
+                $logReward->order_id = $order_detail->order_id;
+
                 // - First time sign up will have 3% off in total order it will be forever.
                 $user_id = $order_detail->user_id;
-
+                
                 $user = User::find($user_id);
-
+                
                 $check_first_time = \DB::table('mshop_order_base')
-                                ->join('mshop_order', 'mshop_order_base.id', '=', 'mshop_order.baseid')
-                                ->where('mshop_order.statusreward', 1)
-                                ->where('mshop_order_base.customerid', $user_id)->count();
-
+                ->join('mshop_order', 'mshop_order_base.id', '=', 'mshop_order.baseid')
+                ->where('mshop_order.statusreward', 1)
+                ->where('mshop_order_base.customerid', $user_id)->count();
+                
                 if($user){
                     if($check_first_time == 0){
                         if(!isset($user->coins)){
@@ -60,8 +70,12 @@ class RewardCustommer extends Command
                         }else{
                             $user->coins = $user->coins + floatval($order_detail->price * 0.03);
                         }
+                        $value += floatval($order_detail->price * 0.03);
                         $user->save();
+                        $content .= "paided for " . $user->name . " ( $" . floatval($order_detail->price * 0.03) . " )<br />";
                     }
+
+                    $logReward->user_buy_id = $user_id;
 
                     // - They will have a code to refer friends and get 3% credit in friend’s order, this money only use to buy something in the website
                     $refer_lv1 = $user->refer;
@@ -72,27 +86,40 @@ class RewardCustommer extends Command
                         if($number_refer_of_lv1 > 20){
                             if(!isset($refer_lv1->coins)){
                                 $refer_lv1->coins = 0 + floatval($order_detail->price * 0.01);
+                                $value += floatval($order_detail->price * 0.01);
                             }else{
                                 $refer_lv1->coins = $refer_lv1->coins + floatval($order_detail->price * 0.01);
+                                $value += floatval($order_detail->price * 0.01);
                             }
                             $refer_lv1->save();
+                            $logReward->user_reward_level_1 = $refer_lv1->id;
+                            $content .= "paided for " . $refer_lv1->name . " ( $" . floatval($order_detail->price * 0.01) . " )<br />";
                             
                             $refer_lv2 = $refer_lv1->refer;
                             if($refer_lv2){
                                 if(!isset($refer_lv2->coins)){
                                     $refer_lv2->coins = 0 + floatval($order_detail->price * 0.01);
+                                    $value += floatval($order_detail->price * 0.01);
                                 }else{
                                     $refer_lv2->coins = $refer_lv2->coins + floatval($order_detail->price * 0.01);
+                                    $value += floatval($order_detail->price * 0.01);
                                 }
                                 $refer_lv2->save();
+
+                                $logReward->user_reward_level_2 = $refer_lv2->id;
+                                $content .= "paided for " . $refer_lv2->name . " ( $" . floatval($order_detail->price * 0.01) . " )<br />";
                             }
                         }else{
                             if(!isset($refer_lv1->coins)){
                                 $refer_lv1->coins = 0 + floatval($order_detail->price * 0.03);
+                                $value += floatval($order_detail->price * 0.03);
                             }else{
                                 $refer_lv1->coins = $refer_lv1->coins + floatval($order_detail->price * 0.03);
+                                $value += floatval($order_detail->price * 0.03);
                             }
                             $refer_lv1->save();
+                            $logReward->user_reward_level_1 = $refer_lv1->id;
+                            $content .= "paided for " . $refer_lv1->name . " ( $" . floatval($order_detail->price * 0.03) . " )<br />";
                             
                             $refer_lv2 = $refer_lv1->refer;
                             if($refer_lv2){
@@ -102,6 +129,8 @@ class RewardCustommer extends Command
                                     $refer_lv2->coins = $refer_lv2->coins + floatval($order_detail->price * 0.01);
                                 }
                                 $refer_lv2->save();
+                                $logReward->user_reward_level_2 = $refer_lv2->id;
+                                $content .= "paided for " . $refer_lv2->name . " ( $" . floatval($order_detail->price * 0.01) . " )<br />";
                             }
                         }
                     }
@@ -110,6 +139,12 @@ class RewardCustommer extends Command
                 \DB::table('mshop_order')
                     ->where('id', $order_detail->order_id)
                     ->update(['statusreward' => 1]);
+                
+                $logReward->created_at = date("Y-m-d H:i:s");
+                $logReward->updated_at = date("Y-m-d H:i:s");
+                $logReward->content = $content;
+                $logReward->value = $value;
+                $logReward->save();
             }
         }
         return Command::SUCCESS;
